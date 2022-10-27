@@ -1,0 +1,25 @@
+.page {
+}
+
+.button {
+  margin-top: 16px;
+}
+
+.forgotPassword {
+  margin: 16px 0;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: end;
+  color: #0e78d9;
+}
+
+.registerText {
+  margin-top: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+
+  & > a {
+    color: #0e78d9;
+  }
+}

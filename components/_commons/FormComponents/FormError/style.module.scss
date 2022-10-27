@@ -1,0 +1,25 @@
+.error {
+  width: 100%;
+  position: relative;
+  border-radius: 10px;
+  padding: 16px;
+  color: #fc5145;
+  background-color:#ffe7e7;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 600;
+
+  & > .errorText {
+      margin-right: 24px;
+  }
+
+  & > .closeIcon {
+    
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+}

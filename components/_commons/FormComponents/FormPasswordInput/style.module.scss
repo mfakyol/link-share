@@ -1,0 +1,14 @@
+.passwordInputWrapper {
+  position: relative;
+
+  & > .eye {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);    
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    fill: #333;
+  }
+}

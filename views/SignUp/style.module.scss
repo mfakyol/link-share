@@ -1,0 +1,29 @@
+.page {
+}
+
+.endpointInput {
+  position: relative;
+}
+
+.terms {
+  font-size: 14px;
+  color: #333333;
+  margin: 16px 0 32px;
+
+  & > a {
+    color: #0e78d9;
+    font-weight: 500;
+  }
+}
+
+.loginText {
+  margin-top: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+
+  & > a {
+    color: #0e78d9;
+  }
+}
+

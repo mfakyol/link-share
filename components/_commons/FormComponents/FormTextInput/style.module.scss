@@ -1,0 +1,34 @@
+.formTextInput {
+  margin-bottom: 16px;
+
+  & > .inputWrapper {
+    & > .input {
+      width: 100%;
+      height: 44px;
+      background: #efefef;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      text-indent: 16px;
+      color: #333;
+      font-weight: 500;
+      font-size: 16px;
+      border: 2px solid #efefef;
+
+      &.error {
+        border-color: #ff4336;
+      }
+
+      &:focus {
+        border-color: #0e78d9;
+      }
+    }
+  }
+
+  & > .error {
+    margin-top: 3px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #ff4336;
+  }
+}
