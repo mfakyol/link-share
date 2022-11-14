@@ -1,0 +1,17 @@
+.radioButtonWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+
+  & > .radioButton {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  & > .label {
+    cursor: pointer;
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,31 @@
+.settingsNavbar {
+  width: 100%;
+  height: 64px;
+  background-color: #fff;
+  padding: 0 32px;
+
+  & > .tabs {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    & > .tab {
+      border-radius: 6px;
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+
+      & > .tabContent {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        height: 48px;
+        padding: 0 16px;
+        font-weight: 600;
+      }
+    }
+  }
+}

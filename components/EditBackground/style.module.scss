@@ -1,0 +1,38 @@
+.backgroundList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+
+  & > .backgroundCard {
+    width: calc(50% - 40px);
+    margin: 0 20px;
+    padding-bottom: 75%;
+ 
+    border-radius: 10px;
+    cursor: pointer;
+
+
+    &.selected {
+      outline-width: 2px;
+      outline-style: solid;
+      outline-color: #444;
+      outline-offset: 6px;
+    }
+  }
+}
+
+.colorCell {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  & > .colorInput {
+  }
+
+  & > .colorTextInput {
+    margin-bottom: 0;
+    width: unset;
+    margin-left: 16px;
+    flex-grow: 1;
+  }
+}

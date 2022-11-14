@@ -1,0 +1,82 @@
+.linksWrapper {
+  max-width: 600px;
+
+  & > .addLinkButton {
+    height: 42px;
+    padding: 0 16px;
+    outline: none;
+    border:none;
+    color: #fff;
+    background-color: #5699e8;
+    margin-bottom: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  & > .links {
+    & > .link {
+      display: flex;
+      background-color: #fff;
+      margin-bottom: 16px;
+      border-radius: 10px;
+
+      & > .drag {
+        display: flex;
+        align-items: center;
+        padding-left: 8px;
+
+        & > .dragIcon {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      & > .content {
+        display: flex;
+        width: 100%;
+        padding: 16px;
+
+        & > .inputs {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+
+          & > .inputRow {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 8px 16px 8px 0;
+
+            & > .label {
+              margin-right: 8px;
+              font-size: 14px;
+              font-weight: 600;
+            }
+
+            & > .input {
+              height: 22px;
+              font-size: 16px;
+              width: 100%;
+              border: none;
+              border-bottom: 1px solid #f0f0f0;
+              outline: none;
+            }
+          }
+        }
+
+        & > .settings {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          & > .deleteIcon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

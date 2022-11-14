@@ -15,6 +15,7 @@ import { validateEmail, validatePassword } from "@lib/validator";
 import { authService } from "services/auth.service";
 import Router from "next/router";
 import FormError from "@components/_commons/FormComponents/FormError";
+import { apiUrl } from "config";
 
 const prefix = "links/";
 
@@ -52,7 +53,7 @@ function SignUpView() {
       const signal = controller.signal;
 
       http
-        .get(`/api/page/isEndPointExist?endpoint=${endPoint}`, { signal })
+        .get(`${apiUrl}/page/isEndPointExist?endPoint=${endPoint}`, { signal })
         .then((res) => res.json())
         .then((res) => {
           if (res.status) {

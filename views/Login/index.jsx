@@ -23,18 +23,20 @@ function LoginView() {
   const login = useCallback(
     async (e) => {
       e.preventDefault();
-
-      const response = await authService.login(email, password);
-      if (response.ok) {
-        const data = await response.json();
-        if (!data.status) {
-          setError(data.message);
-        } else {
-          localStorage.setItem("token", data.token);
-          Router.push("/panel");
+      try {
+        const response = await authService.login(email, password);
+        if (response.ok) {
+          const data = await response.json();
+          if (!data.status) {
+            setError(data.message);
+          } else {
+            localStorage.setItem("token", data.token);
+            Router.push("/panel");
+          }
         }
+      } catch (error) {
+        setError("Unknown Error occured.");
       }
-      console.log(response);
     },
     [email, password]
   );

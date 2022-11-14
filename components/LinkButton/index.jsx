@@ -1,23 +1,13 @@
-import styled from "@emotion/styled";
+import classes from "./style.module.scss";
 
-function LinkButton({ link, title, style, ...rest }) {
-  const Anchor = styled.a`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    text-align: center;
-    word-wrap: break-word;
-    line-height: 1.6;
-    margin-bottom: 16px;
-    padding: 0 16px; 
-    ${style}
-  `;
-
+function LinkButton({ href, title, ...rest }) {
+ 
   return (
-    <Anchor rel="noopener noreferrer" target="_blank" href={link} {...rest}>
+    <a className={classes.link} rel="noopener noreferrer" target="_blank" href={href} {...rest}>
       {title}
-    </Anchor>
+    </a>
+
+    
   );
 }
 

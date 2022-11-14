@@ -11,6 +11,15 @@ const nextConfig = {
 
     return config;
   },
+
+  async rewrites() {
+    return [
+      {
+        source: "/panel/:tab",
+        destination: "/panel",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

@@ -1,0 +1,122 @@
+[
+  {
+    "title": "fill",
+    "styles": [
+      {
+        "id": "fill",
+        "sketchy": {
+          "backgroundColor": "#000"
+        }
+      },
+      {
+        "id": "fillrounded",
+        "sketchy": {
+          "backgroundColor": "#000",
+          "borderRadius": "10px"
+        }
+      },
+      {
+        "id": "fillcircular",
+        "sketchy": {
+          "backgroundColor": "#000",
+          "borderRadius": "999px"
+        }
+      }
+    ]
+  },
+
+  {
+    "title": "outline",
+    "styles": [
+      {
+        "id": "outline",
+        "sketchy": {
+          "border": "1px solid #000",
+          "backgroundColor": "transparent"
+        }
+      },
+      {
+        "id": "outlinerounded",
+
+        "sketchy": {
+          "border": "1px solid #000",
+          "backgroundColor": "transparent",
+          "borderRadius": "10px"
+        }
+      },
+      {
+        "id": "outlinecircular",
+
+        "sketchy": {
+          "border": "1px solid #000",
+          "backgroundColor": "transparent",
+          "borderRadius": "999px"
+        }
+      }
+    ]
+  },
+
+  {
+    "title": "hard shadow",
+
+    "styles": [
+      {
+        "id": "hardshadow",
+
+        "sketchy": {
+          "border": "1px solid #000",
+          "backgroundColor": "transparent",
+          "boxShadow": "4px 4px #000"
+        }
+      },
+      {
+        "id": "hardshadowrounded",
+
+        "sketchy": {
+          "border": "1px solid #000",
+          "backgroundColor": "transparent",
+          "borderRadius": "10px",
+          "boxShadow": "4px 4px #000"
+        }
+      },
+      {
+        "id": "hardshadowcircular",
+        "sketchy": {
+          "border": "1px solid #000",
+          "backgroundColor": "transparent",
+          "borderRadius": "999px",
+          "boxShadow": "4px 4px #000"
+        }
+      }
+    ]
+  },
+  {
+    "title": "soft shadow",
+
+    "styles": [
+      {
+        "id": "softshadow",
+        "sketchy": {
+          "backgroundColor": "transparent",
+          "boxShadow": "0px 1px  2px #00000044"
+        }
+      },
+      {
+        "id": "softshadowrounded",
+        "sketchy": {
+          "backgroundColor": "transparent",
+          "borderRadius": "10px",
+          "boxShadow": "0px 1px  2px #00000044"
+        }
+      },
+      {
+        "id": "softshadowcircular",
+        "sketchy": {
+          "backgroundColor": "transparent",
+          "borderRadius": "999px",
+          "boxShadow": "0px 1px  2px #00000044"
+        }
+      }
+    ]
+  }
+]

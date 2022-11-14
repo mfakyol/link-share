@@ -1,0 +1,15 @@
+.card {
+
+  & > .title {
+    margin-bottom: 16px;
+  }
+
+  & > .body {
+    background-color: #fff;
+    padding: 32px;
+    border-radius: 10px;
+    margin-bottom: 32px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px;
+  }
+  
+}

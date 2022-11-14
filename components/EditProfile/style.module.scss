@@ -1,0 +1,26 @@
+.avatarWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin: 0 auto 32px;
+  background-color: #000;
+
+  & > .avatarFallback {
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+  }
+}
+
+.descriptionLength {
+  display: block;
+  text-align: end;
+  font-size: 14px;
+  font-weight: 400;
+  color: #353535;
+}

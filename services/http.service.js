@@ -1,4 +1,4 @@
-const sendRequest = (method, endPoint, options) => {
+const sendRequest = (method, endPoint, options = {}) => {
   const { headers = {}, ...rest } = options;
 
   return fetch(endPoint, {
@@ -10,6 +10,7 @@ const sendRequest = (method, endPoint, options) => {
     ...rest,
   }).then((response) => {
     if (!response.ok) {
+      console.log(response);
       const responseError = {
         statusText: response.statusText,
         status: response.status,
@@ -18,6 +19,19 @@ const sendRequest = (method, endPoint, options) => {
     }
     return response;
   });
+};
+
+const setAuthToken = (options = {}) => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    if (!options.headers) {
+      options.headers = {};
+    }
+    options.headers.Authorization = `Token ${token}`;
+  }
+
+  return options;
 };
 
 const _get = (endPoint, options) => {
@@ -36,11 +50,28 @@ const _delete = (endPoint, body, options) => {
   return sendRequest("DELETE", endPoint, { ...options, body });
 };
 
+const _getWithAuth = (endPoint, options) => {
+  return _get(endPoint, setAuthToken(options));
+};
+const _postWithAuth = (endPoint, body, options) => {
+  return _post(endPoint, body, setAuthToken(options));
+};
+const _putWithAuth = (endPoint, body, options) => {
+  return _put(endPoint, body, setAuthToken(options));
+};
+const _deleteWithAuth = (endPoint, body, options) => {
+  return _delete(endPoint, body, setAuthToken(options));
+};
+
 const http = {
   get: _get,
   post: _post,
   put: _put,
   delete: _delete,
+  getWithAuth: _getWithAuth,
+  postWithAuth: _postWithAuth,
+  putWithAuth: _putWithAuth,
+  deleteWithAuth: _deleteWithAuth,
 };
 
 export default http;
