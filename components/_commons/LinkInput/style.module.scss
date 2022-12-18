@@ -1,0 +1,52 @@
+.linkInputWrapper {
+  position: relative;
+  width: 100%;
+
+  & > .linkInput {
+    height: 28px;
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    outline: none;
+
+    &.error:not(:focus) {
+      color: var(--red);
+    }
+  }
+
+  & > .linkInput:focus + .errorTextWrapper {
+    display: none;
+  }
+
+  & > .errorTextWrapper {
+    position: absolute;
+    top: calc(100% - 2px);
+
+    left: -8px;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+
+    & > .errorText {
+      position: relative;
+      background-color: var(--red);
+      color: #fff;
+      font-size: 12px;
+      padding: 2px 4px;
+      border-radius: 6px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -11px;
+        left: 6px;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-bottom-color: var(--red);
+        z-index: 1;
+      }
+    }
+  }
+}

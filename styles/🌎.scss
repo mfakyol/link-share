@@ -1,3 +1,14 @@
+:root {
+  --text-primary: "";
+  --bg-primary: #f5f8fa;
+  --bg-secondary: #ffffff;
+  --red: #ff4336;
+  --blue: #0e78d9;
+  --blue-dark: "";
+  --blue-light: "";
+  --box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px;
+}
+
 *,
 *::after,
 *::before {
@@ -9,14 +20,13 @@
 html,
 body {
   min-height: 100%;
-  background: #fff;
-  color: #000;
-  font-family: Inter;
-  font-weight: 400;
 }
 
 body {
-
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: Inter;
+  font-weight: 400;
 }
 
 textarea {
@@ -37,9 +47,21 @@ input {
   font-family: Inter;
 }
 
-
 ul {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+
+
+
+.hideScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hideScrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

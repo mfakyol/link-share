@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
   page: null,
@@ -35,6 +35,9 @@ export const panelSlice = createSlice({
     setPageBackgroundType: (state, action) => {
       state.page.styles.backgroundType = action.payload;
     },
+    setPageBackgroundImage: (state, action) => {
+      state.page.styles.backgroundImage = action.payload;
+    },
 
     setPageLinkColor: (state, action) => {
       state.page.styles.link.color = action.payload;
@@ -50,6 +53,11 @@ export const panelSlice = createSlice({
 
     setPageLinkShadowColor: (state, action) => {
       state.page.styles.link.shadowColor = action.payload;
+    },
+
+    updatePageLink: (state, action) => {
+      let linkIndex = state.page.links.findIndex((l) => l._id == action.payload._id);
+      if (linkIndex > -1) state.page.links[linkIndex] = action.payload;
     },
 
     setPageLinkStyle: (state, action) => {
@@ -68,9 +76,11 @@ export const panelSlice = createSlice({
 export const {
   setPage,
   setPageLinks,
+  updatePageLink,
   setProfileTitle,
   setProfileDescription,
   setPageBackgroundType,
+  setPageBackgroundImage,
   setPageBackgroundColor,
   setPageLinkColor,
   setPageLinkBackgroundColor,

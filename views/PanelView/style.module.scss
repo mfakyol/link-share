@@ -1,0 +1,137 @@
+.panel {
+  background-color: #f5f8fa;
+  width: 100%;
+  min-height: 100vh;
+
+  & > .panelContent {
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    max-width: 1264px;
+    margin: 0 auto;
+    padding: 32px;
+
+    @media (max-width: 767px) {
+      padding: 16px;
+    }
+
+    & > .settings {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    & > .demo {
+      position: sticky;
+      top: 32px;
+      padding-left: 32px;
+
+
+      @media (max-width: 767px) {
+        position: fixed;
+        top: unset;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        width: 100%;
+        height: 100vh;
+        z-index: 10;
+        padding: 0;
+        transform: translateY(100%);
+        opacity: 0;
+  
+
+        &.show {
+          transition: 0.3s;
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      & > .demoContentWrapper {
+        position: relative;
+        width: 320px;
+        margin: 0 auto;
+        padding-top: 196%;
+
+        @media (max-width: 767px) {
+          width: 100%;
+          height: 100%;
+          padding-top: unset;
+        }
+
+        & > .demoContent {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          overflow-y: auto;
+          overflow-x: hidden;
+          border: 8px solid #333;
+          box-shadow: var(--box-shadow);
+          border-radius: 30px;
+
+          @media (max-width: 767px) {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+          }
+        }
+      }
+    }
+
+    & > .previewButtonWrapper {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 3;
+      &.close {
+        z-index: 10;
+      }
+
+      @media (max-width: 767px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+ 
+      }
+
+      & > .previewButton {
+        display: flex;
+        width: unset;
+        padding: 12px 32px;
+        margin-bottom: 32px;
+        border-radius: 12px;
+        border: none;
+        background-color: var(--blue);
+        color: #fff;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: var(--box-shadow);
+
+
+ 
+
+    
+      }
+
+      &.close > .previewButton {
+        padding: 12px;
+        border-radius: 50%;
+
+        & > .closeIcon {
+          width: 24px;
+          height: 24px;
+
+          filter: invert(1);
+        }
+      }
+    }
+  }
+}

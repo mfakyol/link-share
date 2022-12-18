@@ -5,7 +5,11 @@ import classes from "./style.module.scss";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setPageLinks } from "store/panelSlice";
+import { setPageLinks, updatePageLink } from "store/panelSlice";
+import Switch from "@components/_commons/Switch";
+import { validateLinkTitle, validateUrl, valitadeLinkTitle } from "@lib/validator";
+import LinkInput from "@components/_commons/LinkInput";
+import { useId } from "react";
 
 function Links() {
   const dispatch = useDispatch();
@@ -52,6 +56,7 @@ function Links() {
 
       if (response.status) {
         console.log(response);
+        dispatch(setPageLinks(tempLinks));
       }
     } catch (error) {}
   }
@@ -82,26 +87,56 @@ function Links() {
 export default Links;
 
 const LinkItem = ({ link, index, removeLink }) => {
-  const titleInputRef = useRef();
-  const hrefInputRef = useRef();
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    titleInputRef.current.value = link.title;
-    hrefInputRef.current.value = link.href;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const hrefId = useId();
+  const titleId = useId();
+
+  const switchRef = useRef();
+  const hrefInputRef = useRef();
+  const titleInputRef = useRef();
+
+  const [titleError, setTitleError] = useState(validateLinkTitle(link.title));
+  const [hrefError, setHrefError] = useState(validateUrl(link.href));
 
   const updateLink = () => {
-    if (titleInputRef.current.value != link.title || hrefInputRef.current.value != link.href) {
+    if (
+      titleInputRef.current.value != link.title ||
+      hrefInputRef.current.value != link.href ||
+      switchRef.current.checked != link.show
+    ) {
+      let isValid = true;
+      const urlValidationError = validateUrl(hrefInputRef.current.value);
+      const titleValidationError = validateLinkTitle(titleInputRef.current.value);
+      setHrefError(urlValidationError);
+      setTitleError(titleValidationError);
+
+      if (urlValidationError) isValid = false;
+      if (titleValidationError) isValid = false;
+
+      dispatch(
+        updatePageLink({
+          ...link,
+          title: titleInputRef.current.value,
+          href: hrefInputRef.current.value,
+          show: switchRef.current.checked,
+          isValid,
+        })
+      );
+
       try {
         http
           .postWithAuth(`${apiUrl}/link/update`, {
             ...link,
             title: titleInputRef.current.value,
             href: hrefInputRef.current.value,
+            show: switchRef.current.checked,
+            isValid,
           })
           .then((res) => res.json());
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -115,20 +150,35 @@ const LinkItem = ({ link, index, removeLink }) => {
           <div className={classes.content}>
             <div className={classes.inputs}>
               <div className={classes.inputRow}>
-                <label className={classes.label} htmlFor="">
+                <label className={classes.label} htmlFor={titleId}>
                   Title:
                 </label>
-                <input className={classes.input} type="text" ref={titleInputRef} onBlur={updateLink} />
+
+                <LinkInput
+                  id={titleId}
+                  defaultValue={link.title}
+                  error={titleError}
+                  ref={titleInputRef}
+                  onBlur={updateLink}
+                />
               </div>
               <div className={classes.inputRow}>
-                <label className={classes.label} htmlFor="">
+                <label className={classes.label} htmlFor={hrefId}>
                   Link:
                 </label>
-                <input className={classes.input} type="text" ref={hrefInputRef} onBlur={updateLink} />
+
+                <LinkInput
+                  id={hrefId}
+                  defaultValue={link.href}
+                  error={hrefError}
+                  ref={hrefInputRef}
+                  onBlur={updateLink}
+                />
               </div>
             </div>
 
             <div className={classes.settings}>
+              <Switch className={classes.switch} ref={switchRef} defaultChecked={link.show} onChange={updateLink} />
               <img className={classes.deleteIcon} src="/icons/trash.svg" alt="" onClick={() => removeLink(link._id)} />
             </div>
           </div>

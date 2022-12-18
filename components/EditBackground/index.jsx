@@ -9,36 +9,50 @@ import { useState } from "react";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import http from "services/http.service";
-import { setPageBackgroundColor, setPageBackgroundType } from "store/panelSlice";
+import { setPageBackgroundColor, setPageBackgroundImage, setPageBackgroundType } from "store/panelSlice";
 import classes from "./style.module.scss";
 
 const backgroundTypeList = [
-  { value: "flat", background: "flat" },
-  { value: "linear", background: "fill" },
+  { value: "flat", background: "flat", image: "" },
+  { value: "linear", background: "linear", image: "" },
+  { value: "wall", background: "image", image: "/default/wall.jpg" },
+  { value: "sunset", background: "image", image: "/default/sunset.gif" },
 ];
 
 function EditBackground({ page }) {
   const dispatch = useDispatch();
 
   const [backgroundColor, setBackgroundColor] = useState(page.styles.backgroundColor || "#ffffff");
+
   const [backgroundType, setBackgroundType] = useState(
-    backgroundTypeList.find((bt) => bt.value == page.styles.backgroundType) || backgroundTypeList[0]
+    backgroundTypeList.find((bt) =>
+      page.styles.backgroundType != "image"
+        ? bt.background == page.styles.backgroundType
+        : bt.image == page.styles.backgroundImage
+    ) || backgroundTypeList[0]
   );
 
-  const handleOnClickBackgroundType = useCallback((backgroundType) => {
-    setBackgroundType((prev) => {
-      if (prev == backgroundType.value) return prev;
-      http
-        .postWithAuth(`${apiUrl}/appearance/backgroundType`, { backgroundType: backgroundType.value })
-        .then((res) =>{
-          if(res.status){
-            dispatch(setPageBackgroundType(backgroundType.value))
-          }
-        })
-        .catch((e) => console.log(e));
-      return backgroundType;
-    });
-  }, [dispatch]);
+  const handleOnClickBackgroundType = useCallback(
+    (backgroundType) => {
+      setBackgroundType((prev) => {
+        if (prev == backgroundType.value) return prev;
+        http
+          .postWithAuth(`${apiUrl}/appearance/backgroundType`, {
+            backgroundType: backgroundType.background,
+            backgroundImage: backgroundType.image,
+          })
+          .then((res) => {
+            if (res.status) {
+              dispatch(setPageBackgroundType(backgroundType.background));
+              dispatch(setPageBackgroundImage(backgroundType.image));
+            }
+          })
+          .catch((e) => console.log(e));
+        return backgroundType;
+      });
+    },
+    [dispatch]
+  );
 
   const handleBackgroundColorOnChange = useCallback((e) => {
     setBackgroundColor(e.target.value);
@@ -60,21 +74,30 @@ function EditBackground({ page }) {
   );
 
   const calculateBackground = useCallback((backgroundType, backgroundColor) => {
-    if (backgroundType == "flat") return { backgroundColor };
-    else if (backgroundType == "linear")
+    if (backgroundType.value == "flat") return { backgroundColor };
+    if (backgroundType.value == "linear")
       return { background: `linear-gradient(${backgroundColor}, ${colorShade(backgroundColor, 180)})` };
-    return "";
+
+    if (backgroundType.image)
+      return {
+        backgroundImage: `url(${apiUrl}/${backgroundType.image})`,
+        backgroundRepeat: " no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      };
+
+    return {};
   }, []);
 
   return (
     <Card title="Background">
-      <Label>Background</Label>
+      <Label className={classes.backgroundLabel}>Background</Label>
       <div className={classes.backgroundList}>
         {backgroundTypeList.map((bt) => (
           <div
             key={bt.value}
             className={`${classes.backgroundCard}   ${backgroundType.value == bt.value ? classes.selected : ""}`}
-            style={calculateBackground(bt.value, page.styles.backgroundColor)}
+            style={calculateBackground(bt, page.styles.backgroundColor)}
             onClick={() => handleOnClickBackgroundType(bt)}
           ></div>
         ))}

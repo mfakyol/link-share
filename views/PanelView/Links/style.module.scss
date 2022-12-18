@@ -1,17 +1,18 @@
 .linksWrapper {
-  max-width: 600px;
+  width: 100%;
 
   & > .addLinkButton {
     height: 42px;
     padding: 0 16px;
     outline: none;
-    border:none;
+    border: none;
     color: #fff;
     background-color: #5699e8;
     margin-bottom: 16px;
     font-weight: 600;
     border-radius: 6px;
     cursor: pointer;
+    box-shadow: var(--box-shadow);
   }
 
   & > .links {
@@ -20,6 +21,7 @@
       background-color: #fff;
       margin-bottom: 16px;
       border-radius: 10px;
+      box-shadow: var(--box-shadow);
 
       & > .drag {
         display: flex;
@@ -53,15 +55,6 @@
               font-size: 14px;
               font-weight: 600;
             }
-
-            & > .input {
-              height: 22px;
-              font-size: 16px;
-              width: 100%;
-              border: none;
-              border-bottom: 1px solid #f0f0f0;
-              outline: none;
-            }
           }
         }
 
@@ -69,6 +62,11 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+          width: 64px;
+
+          & > .switch {
+            margin-bottom: 8px;
+          }
 
           & > .deleteIcon {
             width: 24px;

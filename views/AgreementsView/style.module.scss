@@ -1,0 +1,48 @@
+.agreements {
+  max-width: 1264px;
+  width: 100%;
+  padding: 32px;
+  margin: 0 auto;
+
+  @media (max-width: 767px) {
+    padding: 16px;
+  }
+
+  & > .title {
+    text-align: center;
+
+    @media (max-width: 767px) {
+      font-size: 24px;
+    }
+  }
+
+  & > .section {
+    margin-top: 32px;
+
+    @media (max-width: 767px) {
+      margin-top: 16px;
+    }
+
+    & > .sectionTitle {
+      margin-bottom: 16px;
+      scroll-margin: 32px;
+
+      @media (max-width: 767px) {
+        margin-bottom: 8px;
+        font-size: 20px;
+      }
+    }
+
+    & > .article {
+      & > .paragraph {
+        margin-bottom: 16px;
+        text-align: justify;
+
+        @media (max-width: 767px) {
+          margin-bottom: 8px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

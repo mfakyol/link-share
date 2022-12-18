@@ -136,12 +136,12 @@ function SignUpView() {
         />
         <p className={classes.terms}>
           By clicking “Sign Up” button, you agree to the{" "}
-          <Link href="/terms">
-            <a>Terms of Use</a>
+          <Link href="/agreements#termsofuse">
+            <a target="_blank">Terms of Use</a>
           </Link>{" "}
           and{" "}
-          <Link href="/privacy">
-            <a>Privacy Policy.</a>
+          <Link href="/agreements#privacypolicy">
+            <a target="_blank">Privacy Policy.</a>
           </Link>
         </p>
 

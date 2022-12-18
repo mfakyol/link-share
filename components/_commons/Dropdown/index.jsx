@@ -49,7 +49,11 @@ function Dropdown({ className = "", selected, setSelected, options = [], ...prop
         }`}
       >
         {options.map((option) => (
-          <div key={option.value} className={`${classes.option} ${option.value == selected?.value ? classes.selected : ""}`} onClick={() => handleOnClickOption(option)}>
+          <div
+            key={option.value}
+            className={`${classes.option} ${option.value == selected?.value ? classes.selected : ""}`}
+            onClick={() => handleOnClickOption(option)}
+          >
             {option.label}
           </div>
         ))}

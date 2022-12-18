@@ -16,7 +16,7 @@
       border: 2px solid #efefef;
 
       &.error {
-        border-color: #ff4336;
+        border-color: var(--red);
       }
 
       &:focus {
@@ -29,6 +29,6 @@
     margin-top: 3px;
     font-weight: 600;
     font-size: 14px;
-    color: #ff4336;
+    color: var(--red);
   }
 }

@@ -1,9 +1,16 @@
-import React from 'react'
+import Head from "next/head";
+import React from "react";
 
 function forgotPassword() {
   return (
-    <div>forgot password</div>
-  )
+    <>
+      <Head>
+        <title>Forgot Password | Links</title>
+        <meta name="robots" content="noindex, follow" />
+      </Head>
+      <div>forgot password</div>
+    </>
+  );
 }
 
-export default forgotPassword
+export default forgotPassword;

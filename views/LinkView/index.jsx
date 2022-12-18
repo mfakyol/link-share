@@ -8,6 +8,7 @@ import { useCallback } from "react";
 import colorShade from "@lib/colorShade";
 import Head from "next/head";
 import { useState } from "react";
+import { apiUrl } from "config";
 
 function LinkView({ page, isInPanel }) {
   const router = useRouter();
@@ -25,6 +26,14 @@ function LinkView({ page, isInPanel }) {
           180
         )})`,
       };
+    if (profileData.styles.backgroundType == "image") {
+      return {
+        backgroundImage: `url(${apiUrl}/${profileData.styles.backgroundImage})`,
+        backgroundRepeat: " no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      };
+    }
     return { backgroundColor: "" };
   }, []);
 
@@ -139,13 +148,13 @@ function LinkView({ page, isInPanel }) {
             >{`I am. show me the content.`}</span>
             <span
               onClick={() => router.push("https://www.google.com")}
-              className={classes.sensetiveContentWarningButton}
+              className={`${classes.sensetiveContentWarningButton} ${classes.cancel}`}
             >{`I am not. Get me out of this insecure place.`}</span>
           </div>
         </div>
       )}
       <div
-        className={`${classes.background} ${isInPanel || showContent ? "" : classes.hideContent}`}
+        className={classes.background}
         style={{
           ...calculateBackgroundStyle(profileData),
           fontFamily: profileData.styles.fontFamily.split("+").join(" "),
@@ -173,9 +182,12 @@ function LinkView({ page, isInPanel }) {
           )}
           <div className={`${classes.linksWrapper} ${profileData.socialPosition == "up" ? classes.reverse : ""}`}>
             <div className={classes.links}>
-              {[...profileData?.links]?.sort().map((link, index) => (
-                <LinkButton key={index} href={link.href} title={link.title} style={calculateLinkStyle(profileData)} />
-              ))}
+              {[...profileData?.links]
+                ?.sort()
+                .filter((link) => link.show && link.isValid)
+                .map((link, index) => (
+                  <LinkButton key={index} href={link.href} title={link.title} style={calculateLinkStyle(profileData)} />
+                ))}
             </div>
 
             <div className={classes.socials}>
@@ -186,7 +198,7 @@ function LinkView({ page, isInPanel }) {
           </div>
         </div>
         <Link href={`/?profile=${router.asPath.split("/")[1]}`}>
-          <a className={classes.logoLink}>
+          <a className={classes.logoLink} rel="noopener noreferrer nofollow">
             <img src="/logo.svg" alt="logo" />
           </a>
         </Link>

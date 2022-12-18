@@ -1,8 +1,7 @@
 import Head from "next/head";
-import LinkView from "@views/LinkView";
-import { cookieParser } from "@lib/cookieParser";
-import http from "services/http.service";
 import { apiUrl } from "config";
+import LinkView from "@views/LinkView";
+import http from "services/http.service";
 
 function Link({ profileData }) {
   return (
@@ -35,9 +34,9 @@ function Link({ profileData }) {
           </>
         )}
       </Head>
-      <div style={{ height: "100vh" }}>
+ 
         <LinkView page={profileData} />
-      </div>
+   
     </>
   );
 }

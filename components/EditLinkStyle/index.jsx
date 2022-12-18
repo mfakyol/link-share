@@ -29,7 +29,7 @@ function EditLinkStyle({ page }) {
   const linkStyles = useMemo(() => {
     return [
       {
-        title: "fill",
+        title: "Fill",
         styles: [
           {
             id: "fill",
@@ -55,7 +55,7 @@ function EditLinkStyle({ page }) {
       },
 
       {
-        title: "outline",
+        title: "Outline",
         styles: [
           {
             id: "outline",
@@ -86,7 +86,7 @@ function EditLinkStyle({ page }) {
       },
 
       {
-        title: "hard shadow",
+        title: "Hard Shadow",
 
         styles: [
           {
@@ -120,7 +120,7 @@ function EditLinkStyle({ page }) {
         ],
       },
       {
-        title: "soft shadow",
+        title: "Soft Shadow",
 
         styles: [
           {
@@ -202,7 +202,7 @@ function EditLinkStyle({ page }) {
     <Card title="Buttons">
       {linkStyles.map((linkStyleGroup) => (
         <div className={classes.linkStyleGroup} key={linkStyleGroup.title}>
-          <div className={classes.linkStyleGroupTitle}>{linkStyleGroup.title}</div>
+          <Label className={classes.linkStyleGroupLabel}>{linkStyleGroup.title}</Label>
           <div className={classes.linkStyleGroupBody}>
             {linkStyleGroup.styles.map((style) => (
               <div
