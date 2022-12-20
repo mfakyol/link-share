@@ -20,18 +20,15 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  backdrop-filter: blur(10px);
-  background-color: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(116.82deg, #f75ba0 0%, #ec791e 100%);
+  color: #fff;
 
   & > .sensetiveContentWarning {
-    background-color: #fff;
-    padding: 32px;
-    border-radius: 10px;
+    max-width: 450px;
 
     @media (max-width: 767px) {
       margin: 0 16px;
       width: calc(100% - 32px);
-      padding: 16px;
     }
 
     & > .sensetiveContentWarningMessage {
@@ -44,7 +41,7 @@
       display: block;
       width: 100%;
       text-align: center;
- 
+
       margin: 16px auto 0;
       padding: 12px 16px;
       border-radius: 6px;
@@ -53,6 +50,7 @@
       background-color: var(--blue);
       color: #fff;
       font-weight: 600;
+      box-shadow: var(--box-shadow);
 
       &.cancel {
         background-color: var(--red);

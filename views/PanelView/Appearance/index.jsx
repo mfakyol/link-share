@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import classes from "./style.module.scss";
+import EditFont from "@components/EditFont";
+import EditSocial from "@components/EditSocial";
 import EditProfile from "@components/EditProfile";
 import EditLinkStyle from "@components/EditLinkStyle";
-import EditFont from "@components/EditFont";
 import EditBackground from "@components/EditBackground";
-import LinkView from "@views/LinkView";
 
 function Appearance() {
   const page = useSelector((state) => state.panel.page);
@@ -13,13 +13,11 @@ function Appearance() {
     <div className={classes.appearance}>
       {page && (
         <>
-       
-            <EditProfile page={page} />
-            <EditBackground page={page} />
-            <EditLinkStyle page={page} />
-            <EditFont page={page} />
-     
-
+          <EditProfile page={page} />
+          <EditBackground page={page} />
+          <EditLinkStyle page={page} />
+          <EditFont page={page} />
+          <EditSocial page={page} />
         </>
       )}
     </div>

@@ -29,9 +29,10 @@ function AddOrEditSocialPopup({ social, setSocial, isEdit = false, onBack }) {
   );
 
   const handleOnClick = useCallback(() => {
+    setLoading(true);
     if (isEdit) {
+      http.postWithAuth;
     } else {
-      setLoading(true)
       http
         .postWithAuth(`${apiUrl}/social`, {
           type: social.type,
@@ -42,11 +43,12 @@ function AddOrEditSocialPopup({ social, setSocial, isEdit = false, onBack }) {
           console.log(res);
           if (res.status) {
             dispatch(setPageSocials(res.socials));
-            setSocial(undefined)
+            setSocial(undefined);
           } else {
             setError(res.message);
           }
-        }).finally(() => setLoading(false))
+        })
+        .finally(() => setLoading(false));
     }
   }, [isEdit, social, dispatch, setSocial]);
 
@@ -55,7 +57,7 @@ function AddOrEditSocialPopup({ social, setSocial, isEdit = false, onBack }) {
       show={social}
       onBack={onBack}
       onClose={() => setSocial(undefined)}
-      title={`Add ${social?.name || "Social"} Icon`}
+      title={`${isEdit ? "Edit" : "Add"} ${social?.name || "Social"} Icon`}
     >
       <div className={classes.socialList}>
         {error && <FormError error={error} setError={setError} />}
@@ -67,7 +69,9 @@ function AddOrEditSocialPopup({ social, setSocial, isEdit = false, onBack }) {
           placeholder={social?.hrefValidations?.[0]}
           onChange={handleOnChange}
         />
-        <FormButton disabled={disabled || loading} onClick={handleOnClick}>{`Add ${social?.name} Icon`}</FormButton>
+        <FormButton disabled={disabled || loading} onClick={handleOnClick}>{`${isEdit ? "Edit" : "Add"} ${
+          social?.name
+        } Icon`}</FormButton>
       </div>
     </Popup>
   );

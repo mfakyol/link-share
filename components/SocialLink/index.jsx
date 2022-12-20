@@ -1,9 +1,9 @@
 import classes from "./style.module.scss";
 
-function SocialLink({ social, theme }) {
+function SocialLink({ social, style }) {
   return (
     <a className={classes.social} rel="noopener noreferrer nofollow external" target="_blank" href={social.href}>
-      <img src={`/icons/social/${theme}/${social.type}.svg`} alt={social.type} />
+      <img src={`/icons/social/${style}/${social.type}.svg`} alt={social.type} />
     </a>
   );
 }

@@ -9,11 +9,8 @@ function Link({ profileData }) {
       <Head>
         <title>{`${profileData?.metaTitle || profileData?.profileTitle} | Links`}</title>
         <meta name="description" content={profileData.metaDescription || profileData.profileDescription || ""} />
+        
 
-        {profileData.styles?.profileFontFamilyUrls?.length > 0 &&
-          profileData.styles?.profileFontFamilyUrls.map((fontFamilyUrl, index) => (
-            <link key={index} href={fontFamilyUrl} rel="stylesheet" />
-          ))}
         {profileData?.analistic?.googleAnalisticId && (
           <>
             <script

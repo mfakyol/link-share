@@ -180,7 +180,7 @@ function LinkView({ page, isInPanel }) {
               {profileData.profileDescription}
             </h2>
           )}
-          <div className={`${classes.linksWrapper} ${profileData.socialPosition == "up" ? classes.reverse : ""}`}>
+          <div className={`${classes.linksWrapper} ${profileData.styles.social.position == "top" ? classes.reverse : ""}`}>
             <div className={classes.links}>
               {[...profileData?.links]
                 ?.sort()
@@ -191,8 +191,8 @@ function LinkView({ page, isInPanel }) {
             </div>
 
             <div className={classes.socials}>
-              {profileData?.socials.map((social) => (
-                <SocialLink key={social.id} social={social} theme={profileData.styles.social.theme} />
+              {profileData?.socials.filter(social => social.show).map((social) => (
+                <SocialLink key={social.type} social={social} style={profileData.styles.social.style} />
               ))}
             </div>
           </div>
