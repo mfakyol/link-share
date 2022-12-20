@@ -1,6 +1,6 @@
 import CheckIcon from "./CheckIcon";
 import CloseIcon from "./CloseIcon";
-import RefreshIcon from "./RefreshICon";
+import RefreshIcon from "./RefreshIcon1";
 import classes from "./style.module.scss";
 
 function CheckStatus({ status = 0, className = "" }) {
