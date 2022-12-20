@@ -1,0 +1,44 @@
+[
+  {
+    "type": "youtube",
+    "name": "Youtube",
+    "icon": "youtube.svg",
+    "hrefValidations": ["https://www.youtube.com/", "https://youtube.com/", "www.youtube.com/", "youtube.com/"]
+  },
+  {
+    "type": "twitter",
+    "name": "Twitter",
+    "icon": "twitter.svg",
+    "hrefValidations": ["https://www.twitter.com/", "https://twitter.com/", "www.twitter.com/", "twitter.com/"]
+  },
+  {
+    "type": "tiktok",
+    "name": "Tiktok",
+    "icon": "tiktok.svg",
+    "hrefValidations": ["https://www.tiktok.com/@", "https://tiktok.com/@", "www.tiktok.com/@", "tiktok.com/@"]
+  },
+  {
+    "type": "spotify",
+    "name": "Spotify",
+    "icon": "spotify.svg",
+    "hrefValidations": ["https://open.spotify.com/artist/", "open.spotify.com/artist/"]
+  },
+  {
+    "type": "instagram",
+    "name": "Instagram",
+    "icon": "instagram.svg",
+    "hrefValidations": ["https://www.instagram.com/", "https://instagram.com/", "www.instagram.com/", "instagram.com/"]
+  },
+  {
+    "type": "facebook",
+    "name": "Facebook",
+    "icon": "facebook.svg",
+    "hrefValidations": ["https://www.facebook.com/", "https://facebook.com/", "www.facebook.com/", "facebook.com/"]
+  },
+  {
+    "type": "apple-music",
+    "name": "Apple Music",
+    "icon": "apple-music.svg",
+    "hrefValidations": ["https://music.apple.com/artist/", "music.apple.com/artist/"]
+  }
+]

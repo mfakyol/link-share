@@ -191,8 +191,8 @@ function LinkView({ page, isInPanel }) {
             </div>
 
             <div className={classes.socials}>
-              {profileData?.socials?.sort().map((social) => (
-                <SocialLink key={social.id} social={social} theme={profileData.socialTheme} />
+              {profileData?.socials.map((social) => (
+                <SocialLink key={social.id} social={social} theme={profileData.styles.social.theme} />
               ))}
             </div>
           </div>

@@ -1,0 +1,69 @@
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 11;
+
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}
+
+.popupContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 16px);
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 32px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  z-index: 12;
+  display: none;
+
+  @media (max-width: 767px) {
+    padding: 16px;
+  }
+
+  &.show {
+    display: block;
+  }
+
+  & > .popupHeader {
+    position: relative;
+    text-align: center;
+    font-weight: 500;
+
+    & > .arrowIcon {
+      position: absolute;
+      top: 50%;
+      left: 0px;
+      transform: translateY(-50%) rotate(90deg);
+      width: 24px;
+      height: 24px;
+      padding: 3px;
+      cursor: pointer;
+    }
+    & > .closeIcon {
+      position: absolute;
+      top: 50%;
+      right: 0px;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+  }
+
+  & > .popupBody {
+    margin-top: 32px;
+  }
+}

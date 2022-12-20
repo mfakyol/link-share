@@ -16,6 +16,10 @@ export const panelSlice = createSlice({
       state.page.links = action.payload;
     },
 
+    setPageSocials: (state, action) => {
+      state.page.socials = action.payload;
+    },
+
     setProfileTitle: (state, action) => {
       state.page.profileTitle = action.payload;
     },
@@ -76,6 +80,7 @@ export const panelSlice = createSlice({
 export const {
   setPage,
   setPageLinks,
+  setPageSocials,
   updatePageLink,
   setProfileTitle,
   setProfileDescription,

@@ -1,3 +1,17 @@
 .socialWrapper {
   width: 100%;
+
+  & > .addSocialButton {
+    height: 42px;
+    padding: 0 16px;
+    outline: none;
+    border: none;
+    color: #fff;
+    background-color: #5699e8;
+    margin-bottom: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+  }
 }

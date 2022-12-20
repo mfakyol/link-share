@@ -1,20 +1,18 @@
-import Links from "@views/Panel/Links";
-import Router, { useRouter } from "next/router";
-import classes from "./style.module.scss";
-import PanelNavbar from "@components/PanelNavbar";
-import { useEffect } from "react";
-import http from "services/http.service";
+import Links from "./Links";
+import Social from "./Social";
 import { apiUrl } from "config";
-import { useDispatch } from "react-redux";
-import { setPage } from "store/panelSlice";
+import Settings from "./Settings";
 import Appearance from "./Appearance";
 import LinkView from "@views/LinkView";
+import http from "services/http.service";
 import { useSelector } from "react-redux";
-import Settings from "./Settings";
-import Social from "./Social";
-import { useState } from "react";
-import FormButton from "@components/_commons/FormComponents/FormButton";
-import Switch from "@components/_commons/Switch";
+import { useDispatch } from "react-redux";
+import classes from "./style.module.scss";
+import { setPage } from "store/panelSlice";
+import { useEffect,useState } from "react";
+import Router, { useRouter } from "next/router";
+import PanelNavbar from "@components/PanelNavbar";
+ 
 
 function PanelView() {
   const page = useSelector((state) => state.panel.page);

@@ -1,15 +1,13 @@
 import { apiUrl } from "config";
-import React, { useCallback, useEffect, useRef, useState } from "react";
 import http from "services/http.service";
 import classes from "./style.module.scss";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { setPageLinks, updatePageLink } from "store/panelSlice";
 import Switch from "@components/_commons/Switch";
-import { validateLinkTitle, validateUrl, valitadeLinkTitle } from "@lib/validator";
+import { useSelector, useDispatch } from "react-redux";
 import LinkInput from "@components/_commons/LinkInput";
-import { useId } from "react";
+import { validateLinkTitle, validateUrl } from "@lib/validator";
+import { setPageLinks, updatePageLink } from "store/panelSlice";
+import React, { useCallback, useRef, useState, useId } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function Links() {
   const dispatch = useDispatch();

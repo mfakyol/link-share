@@ -1,0 +1,39 @@
+.socialList {
+  & > .socialItem {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 8px 16px;
+    border: 1px solid #d0d0d0;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &.exist {
+      pointer-events: none;
+    }
+
+    & > .socialIcon {
+      width: 24px;
+      height: 24px;
+    }
+
+    & > .socialName {
+      margin-left: 8px;
+    }
+
+    & > .existText {
+      margin-left: auto;
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    & > .arrowIcon {
+      margin-left: auto;
+      transform: rotate(-90deg);
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
