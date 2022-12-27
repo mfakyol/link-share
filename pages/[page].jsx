@@ -54,7 +54,7 @@ export async function getStaticProps(context) {
   const { page } = context.params;
   try {
     const response = await http.get(`${apiUrl}/page?endPoint=${page}`).then((res) => res.json());
-    if (response?.data?.page) return { props: { profileData: response.data.page } };
+    if (response?.data?.page) return { props: { profileData: response.data.page },  revalidate: 1 };
     else return { notFound: true };
   } catch (error) {
     if (error?.status == 404) return { notFound: true };
