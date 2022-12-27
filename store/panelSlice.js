@@ -20,6 +20,21 @@ export const panelSlice = createSlice({
       state.page.socials = action.payload;
     },
 
+    setPageSocialShow: (state, action) => {
+      const index = state.page.socials.findIndex((social) => social._id == action.payload.id);
+      if (index > -1) {
+        state.page.socials[index].show = action.payload.show;
+      }
+    },
+
+    setPageSocialPosition: (state, action) => {
+      state.page.styles.social.position = action.payload.position;
+    },
+
+    setPageSocialStyle: (state, action) => {
+      state.page.styles.social.style = action.payload.style;
+    },
+
     setProfileTitle: (state, action) => {
       state.page.profileTitle = action.payload;
     },
@@ -81,6 +96,9 @@ export const {
   setPage,
   setPageLinks,
   setPageSocials,
+  setPageSocialShow,
+  setPageSocialPosition,
+  setPageSocialStyle,
   updatePageLink,
   setProfileTitle,
   setProfileDescription,

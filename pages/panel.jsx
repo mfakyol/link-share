@@ -1,6 +1,5 @@
-import PanelView from "@views/PanelView";
 import Head from "next/head";
-import React from "react";
+import PanelView from "@views/PanelView";
 
 function PanelPage() {
   return (
