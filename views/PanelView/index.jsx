@@ -1,20 +1,19 @@
 import Links from "./Links";
 import Social from "./Social";
-import { apiUrl } from "config";
 import Settings from "./Settings";
 import Appearance from "./Appearance";
-import LinkView from "@views/LinkView";
+import { apiUrl, domain } from "config";
 import http from "services/http.service";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import classes from "./style.module.scss";
 import { setPage } from "store/panelSlice";
-import { useEffect,useState } from "react";
 import Router, { useRouter } from "next/router";
 import PanelNavbar from "@components/PanelNavbar";
- 
+import { useEffect, useState, useRef } from "react";
 
 function PanelView() {
+  const iframeRef = useRef();
   const page = useSelector((state) => state.panel.page);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -46,6 +45,12 @@ function PanelView() {
     else document.body.style.overflow = "auto";
   }, [showPreview]);
 
+  useEffect(() => {
+    if (iframeRef.current) {
+      iframeRef.current.contentWindow.location.reload();
+    }
+  }, [page]);
+
   return (
     <div className={classes.panel}>
       <PanelNavbar />
@@ -61,7 +66,13 @@ function PanelView() {
           <div className={`${classes.demo} ${showPreview ? classes.show : ""}`}>
             <div className={classes.demoContentWrapper}>
               <div className={`${classes.demoContent} hideScrollbar`}>
-                <LinkView page={page} isInPanel={true} />
+                <iframe
+            
+                  key={page.update}
+                  ref={iframeRef}
+                  className={`${classes.iframe} hideScrollbar`}
+                  src={`${domain}/${page.endPoint}`}
+                />
               </div>
             </div>
           </div>

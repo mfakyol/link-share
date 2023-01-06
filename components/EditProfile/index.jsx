@@ -9,6 +9,7 @@ import { apiUrl } from "config";
 import { useDispatch } from "react-redux";
 import { setProfileDescription, setProfileTitle } from "store/panelSlice";
 import Card from "@components/Card";
+import ProfileAvatar from "./ProfileAvatar";
 
 const TITLE_MAX_LENGTH = 30;
 const DESCRITION_MAX_LENGTH = 160;
@@ -70,9 +71,7 @@ function EditProfile({ page }) {
 
   return (
     <Card title="Profile">
-      <div className={classes.avatarWrapper}>
-        <span className={classes.avatarFallback}>{page.profileTitle ? page.profileTitle[0] : page.endPoint[0]}</span>
-      </div>
+      <ProfileAvatar profileImage={null} avatarImage={page.profileTitle} endPoint={page.endPoint} />
 
       <Label className={classes.label} htmlFor="title">
         Title

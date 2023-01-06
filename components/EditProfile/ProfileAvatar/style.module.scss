@@ -1,0 +1,59 @@
+.avatarWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin: 0 auto 32px;
+  background-color: #000;
+  overflow: hidden;
+
+  &:hover {
+    & > .uploadImageIconWrapper {
+      display: flex;
+    }
+  }
+
+  & > .uploadImageIconWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(120, 120, 120, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: none;
+    opacity: 0;
+    animation: fadeIn 0.2s ease-in-out forwards;
+
+    & > .uploadImageIcon {
+      width: 40%;
+      height: 40%;
+      filter: brightness(1) invert(1);
+    }
+  }
+
+  & > .avatarFallback {
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  & > .fileInput {
+    display: none;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+

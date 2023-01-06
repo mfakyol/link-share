@@ -198,7 +198,7 @@ function LinkView({ page, isInPanel }) {
           </div>
         </div>
         <Link href={`/?profile=${router.asPath.split("/")[1]}`}>
-          <a className={classes.logoLink} rel="noopener noreferrer nofollow">
+          <a className={classes.logoLink} rel="noopener noreferrer nofollow" target="_blank">
             <img src="/logo.svg" alt="logo" />
           </a>
         </Link>

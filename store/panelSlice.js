@@ -16,6 +16,11 @@ export const panelSlice = createSlice({
       state.page.links = action.payload;
     },
 
+    removeLink: (state, action) => {
+      const linkId = action.payload;
+      state.page.links = state.page.links.filter((link) => link._id != linkId);
+    },
+
     setPageSocials: (state, action) => {
       state.page.socials = action.payload;
     },
@@ -95,6 +100,7 @@ export const panelSlice = createSlice({
 export const {
   setPage,
   setPageLinks,
+  removeLink,
   setPageSocials,
   setPageSocialShow,
   setPageSocialPosition,

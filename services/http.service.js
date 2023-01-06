@@ -10,7 +10,6 @@ const sendRequest = (method, endPoint, options = {}) => {
     ...rest,
   }).then((response) => {
     if (!response.ok) {
-      console.log(response);
       const responseError = {
         statusText: response.statusText,
         status: response.status,
