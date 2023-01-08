@@ -23,7 +23,7 @@ function SeoSettings({ page }) {
     (e) => {
       if (e.target.value == page.metaTitle) return;
       http
-        .postWithAuth(`${apiUrl}/settings/seo/metaTitle`, { metaTitle: e.target.value })
+        .postWithAuth(`${apiUrl}/settings/seo/metaTitle`, { body: { metaTitle: e.target.value } })
         .then((res) => console.log(res))
         .catch((e) => console.log(e));
     },
@@ -40,7 +40,7 @@ function SeoSettings({ page }) {
     (e) => {
       if (e.target.value == page.metaDescription) return;
       http
-        .postWithAuth(`${apiUrl}/settings/seo/metaDescription`, { metaDescription: e.target.value })
+        .postWithAuth(`${apiUrl}/settings/seo/metaDescription`, { body: { metaDescription: e.target.value } })
         .then((res) => console.log(res))
         .catch((e) => console.log(e));
     },

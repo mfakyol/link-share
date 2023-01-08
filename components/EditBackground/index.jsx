@@ -38,8 +38,10 @@ function EditBackground({ page }) {
         if (prev == backgroundType.value) return prev;
         http
           .postWithAuth(`${apiUrl}/appearance/backgroundType`, {
-            backgroundType: backgroundType.background,
-            backgroundImage: backgroundType.image,
+            body: {
+              backgroundType: backgroundType.background,
+              backgroundImage: backgroundType.image,
+            },
           })
           .then((res) => {
             if (res.status) {
@@ -62,7 +64,7 @@ function EditBackground({ page }) {
     (e) => {
       if (!isColor(e.target.value)) return;
       http
-        .postWithAuth(`${apiUrl}/appearance/backgroundColor`, { backgroundColor: e.target.value })
+        .postWithAuth(`${apiUrl}/appearance/backgroundColor`, { body: { backgroundColor: e.target.value } })
         .then((res) => {
           if (res.status) {
             dispatch(setPageBackgroundColor(e.target.value));

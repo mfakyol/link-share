@@ -43,7 +43,7 @@ function EditProfile({ page }) {
       if (e.target.value.length > TITLE_MAX_LENGTH) return;
       if (page.profileTitle != e.target.value) {
         http
-          .postWithAuth(`${apiUrl}/appearance/title`, { title: e.target.value })
+          .postWithAuth(`${apiUrl}/appearance/title`, { body: { title: e.target.value } })
           .then((res) => {
             if (res.status) dispatch(setProfileTitle(e.target.value));
             else console.log(res?.message);
@@ -58,7 +58,7 @@ function EditProfile({ page }) {
       if (!e.target.value) return console.log("cannot be empty.");
       if (page.profileDescription != e.target.value) {
         http
-          .postWithAuth(`${apiUrl}/appearance/description`, { description: e.target.value })
+          .postWithAuth(`${apiUrl}/appearance/description`, { body: { description: e.target.value } })
           .then((res) => {
             if (res.status) dispatch(setProfileDescription(e.target.value));
             else console.log(res?.message);
@@ -71,7 +71,7 @@ function EditProfile({ page }) {
 
   return (
     <Card title="Profile">
-      <ProfileAvatar profileImage={null} avatarImage={page.profileTitle} endPoint={page.endPoint} />
+      <ProfileAvatar avatarImage={page.profileImage} profileTitle={page.profileTitle} endPoint={page.endPoint} />
 
       <Label className={classes.label} htmlFor="title">
         Title

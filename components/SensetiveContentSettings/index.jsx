@@ -11,7 +11,9 @@ function SensetiveContentSettings({ page }) {
   const handleRadioButtonOnChange = useCallback((e) => {
     setSensitiveContentAgeLimit(e.target.value);
     http
-      .postWithAuth(`${apiUrl}/settings/sensitiveContentAgeLimit`, { sensitiveContentAgeLimit: e.target.value })
+      .postWithAuth(`${apiUrl}/settings/sensitiveContentAgeLimit`, {
+        body: { sensitiveContentAgeLimit: e.target.value },
+      })
       .then((res) => console.log(res))
       .catch((e) => console.log(e));
   }, []);

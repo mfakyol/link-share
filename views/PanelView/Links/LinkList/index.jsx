@@ -17,7 +17,7 @@ function LinkList({ links = [], setLinks }) {
       try {
         http
           .postWithAuth(`${apiUrl}/link/remove`, {
-            linkId,
+            body: { linkId },
           })
           .then((res) => res.json())
           .then((res) => {
@@ -40,7 +40,7 @@ function LinkList({ links = [], setLinks }) {
     setLinks(tempLinks);
     try {
       http
-        .postWithAuth(`${apiUrl}/link/reorder`, { reorderedLinkIds: tempLinks.map((l) => l._id) })
+        .postWithAuth(`${apiUrl}/link/reorder`, { body: { reorderedLinkIds: tempLinks.map((l) => l._id) } })
         .then((res) => res.json())
         .then((res) => {
           if (res.status) {
@@ -99,11 +99,13 @@ const LinkItem = ({ link, index, onRemoveLink }) => {
       try {
         http
           .postWithAuth(`${apiUrl}/link/update`, {
-            ...link,
-            title: titleInputRef.current.value,
-            href: hrefInputRef.current.value,
-            show: switchRef.current.checked,
-            isValid,
+            body: {
+              ...link,
+              title: titleInputRef.current.value,
+              href: hrefInputRef.current.value,
+              show: switchRef.current.checked,
+              isValid,
+            },
           })
           .then((res) => res.json())
           .then((res) => {

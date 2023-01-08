@@ -23,29 +23,35 @@ function EditFont({ page }) {
   const handleFontColorOnChange = useCallback((e) => {
     setFontColor(e.target.value);
   }, []);
-  const handleFontColorOnBlur = useCallback((e) => {
-    if (!isColor(e.target.value)) return;
-    http
-      .postWithAuth(`${apiUrl}/appearance/fontColor`, { fontColor: e.target.value })
-      .then((res) => {
-        if (res.status) {
-          dispatch(setPageFontColor(e.target.value));
-        }
-      })
-      .catch((e) => console.log(e));
-  }, [dispatch]);
+  const handleFontColorOnBlur = useCallback(
+    (e) => {
+      if (!isColor(e.target.value)) return;
+      http
+        .postWithAuth(`${apiUrl}/appearance/fontColor`, { body: { fontColor: e.target.value } })
+        .then((res) => {
+          if (res.status) {
+            dispatch(setPageFontColor(e.target.value));
+          }
+        })
+        .catch((e) => console.log(e));
+    },
+    [dispatch]
+  );
 
-  const handleSelectFont = useCallback((option) => {
-    setSelectedFont(option);
-    http
-      .postWithAuth(`${apiUrl}/appearance/fontFamily`, { fontFamily: option.value })
-      .then((res) => {
-        if (res.status) {
-          dispatch(setPageFontFamily( option.value));
-        }
-      })
-      .catch((e) => console.log(e));
-  }, [dispatch]);
+  const handleSelectFont = useCallback(
+    (option) => {
+      setSelectedFont(option);
+      http
+        .postWithAuth(`${apiUrl}/appearance/fontFamily`, { body:{fontFamily: option.value} })
+        .then((res) => {
+          if (res.status) {
+            dispatch(setPageFontFamily(option.value));
+          }
+        })
+        .catch((e) => console.log(e));
+    },
+    [dispatch]
+  );
 
   return (
     <Card title="Font">

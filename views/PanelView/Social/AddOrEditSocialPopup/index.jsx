@@ -35,8 +35,10 @@ function AddOrEditSocialPopup({ social, setSocial, isEdit = false, onBack }) {
     } else {
       http
         .postWithAuth(`${apiUrl}/social`, {
-          type: social.type,
-          href: inputRef.current.value,
+          body: {
+            type: social.type,
+            href: inputRef.current.value,
+          },
         })
         .then((res) => res.json())
         .then((res) => {

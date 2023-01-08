@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Cropper from "react-easy-crop";
 import classes from "./style.module.scss";
- 
 
 function ImageCropper({ inputImage, setCroppedAreaPixels }) {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
@@ -18,6 +17,8 @@ function ImageCropper({ inputImage, setCroppedAreaPixels }) {
         crop={crop}
         zoom={zoom}
         aspect={1}
+        cropShape="round"
+        showGrid={false}
         onCropChange={setCrop}
         onCropComplete={onCropComplete}
         onZoomChange={setZoom}

@@ -37,7 +37,7 @@ function Social() {
 
     try {
       const response = await http
-        .postWithAuth(`${apiUrl}/social/reorder`, { reorderedSocials: tempSocials })
+        .postWithAuth(`${apiUrl}/social/reorder`, { body: { reorderedSocials: tempSocials } })
         .then((res) => res.json());
 
       if (response.status) {
@@ -51,7 +51,9 @@ function Social() {
   const toggleShowSocial = useCallback(
     async (e, social) => {
       try {
-        const response = await http.postWithAuth(`${apiUrl}/social/show`, { id: social._id, show: e.target.checked });
+        const response = await http.postWithAuth(`${apiUrl}/social/show`, {
+          body: { id: social._id, show: e.target.checked },
+        });
         if (response.status) {
           dispatch(setPageSocialShow({ id: social._id, show: e.target.checked }));
         }
@@ -81,7 +83,7 @@ function Social() {
         setShow={setShowNewSocialPopup}
       />
       <AddOrEditSocialPopup
-      isEdit={isEdit}
+        isEdit={isEdit}
         social={selectedSocial}
         setSocial={setSelectedSocial}
         onBack={isEdit ? null : handleOnBack}

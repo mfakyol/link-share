@@ -12,6 +12,10 @@ export const panelSlice = createSlice({
       state.page = action.payload;
     },
 
+    setProfileImage: (state, action) => {
+      state.page.profileImage = action.payload;
+    },
+
     setPageLinks: (state, action) => {
       state.page.links = action.payload;
     },
@@ -99,6 +103,7 @@ export const panelSlice = createSlice({
 
 export const {
   setPage,
+  setProfileImage,
   setPageLinks,
   removeLink,
   setPageSocials,

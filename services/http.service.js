@@ -1,13 +1,10 @@
-const sendRequest = (method, endPoint, options = {}) => {
-  const { headers = {}, ...rest } = options;
+const sendRequest = (method, endPoint, options = {}, isAuthRequest = false) => {
+  if (isAuthRequest) setAuthToken(options);
+  if (options.body) formatBody(options);
 
   return fetch(endPoint, {
     method,
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-    ...rest,
+    ...options,
   }).then((response) => {
     if (!response.ok) {
       const responseError = {
@@ -33,33 +30,42 @@ const setAuthToken = (options = {}) => {
   return options;
 };
 
+const formatBody = (options) => {
+  if (!options.body) return;
+  if (!(options.body instanceof FormData)) {
+    if (!options.headers) options.headers = {};
+    options.headers["Content-Type"] = "application/json";
+    options.body = JSON.stringify(options.body);
+  }
+};
+
 const _get = (endPoint, options) => {
   return sendRequest("GET", endPoint, options);
 };
 
-const _post = (endPoint, body, options) => {
-  return sendRequest("POST", endPoint, { ...options, body: JSON.stringify(body) });
+const _post = (endPoint, options) => {
+  return sendRequest("POST", endPoint, options);
 };
 
-const _put = (endPoint, body, options) => {
-  return sendRequest("PUT", endPoint, { ...options, body });
+const _put = (endPoint, options) => {
+  return sendRequest("PUT", endPoint, options);
 };
 
-const _delete = (endPoint, body, options) => {
-  return sendRequest("DELETE", endPoint, { ...options, body });
+const _delete = (endPoint, options) => {
+  return sendRequest("DELETE", endPoint, options);
 };
 
 const _getWithAuth = (endPoint, options) => {
-  return _get(endPoint, setAuthToken(options));
+  return sendRequest("GET", endPoint, options, true);
 };
-const _postWithAuth = (endPoint, body, options) => {
-  return _post(endPoint, body, setAuthToken(options));
+const _postWithAuth = (endPoint, options) => {
+  return sendRequest("POST", endPoint, options, true);
 };
-const _putWithAuth = (endPoint, body, options) => {
-  return _put(endPoint, body, setAuthToken(options));
+const _putWithAuth = (endPoint, options) => {
+  return sendRequest("PUT", endPoint, options, true);
 };
-const _deleteWithAuth = (endPoint, body, options) => {
-  return _delete(endPoint, body, setAuthToken(options));
+const _deleteWithAuth = (endPoint, options) => {
+  return sendRequest("DELETE", endPoint, options, true);
 };
 
 const http = {

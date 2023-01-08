@@ -32,7 +32,7 @@ function Links() {
         <button className={classes.addLinkButton} onClick={handleAddNewLink}>
           Add New Link
         </button>
-        <LinkList links={links} setLinks={setLinks}/>
+        <LinkList links={links} setLinks={setLinks} />
       </div>
     )
   );

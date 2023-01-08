@@ -1,3 +1,4 @@
+import { apiUrl } from "config";
 import classes from "./style.module.scss";
 
 export default function ProfileImage({ profileData }) {
@@ -6,7 +7,7 @@ export default function ProfileImage({ profileData }) {
       {profileData.profileImage ? (
         <img
           className={classes.profileImage}
-          src={profileData.profileImage}
+          src={`${apiUrl}/${profileData.profileImage}`}
           alt={profileData.profileTitle}
           title={profileData.profileTitle}
         />

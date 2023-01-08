@@ -158,7 +158,7 @@ function EditLinkStyle({ page }) {
       setSelectedButtonSyle(buttonStyle);
 
       http
-        .postWithAuth(`${apiUrl}/appearance/style`, { style: buttonStyle })
+        .postWithAuth(`${apiUrl}/appearance/style`, { body: { style: buttonStyle } })
         .then((res) => {
           if (res.status) {
             dispatch(setPageLinkStyle(buttonStyle));
@@ -182,8 +182,7 @@ function EditLinkStyle({ page }) {
       if (!["text", "background", "border", "shadow"].some((v) => type == v)) return;
       http
         .postWithAuth(`${apiUrl}/appearance/color`, {
-          type,
-          color: e.target.value,
+          body: { type, color: e.target.value },
         })
         .then((res) => {
           if (res.status) {

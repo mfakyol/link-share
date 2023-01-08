@@ -12,7 +12,7 @@ function EditSocial({ page }) {
 
   const handleOnChangePosition = async (e) => {
     try {
-      const response = await http.postWithAuth(`${apiUrl}/social/position`, { position: e.target.value });
+      const response = await http.postWithAuth(`${apiUrl}/social/position`, { body: { position: e.target.value } });
 
       if (response.status) dispatch(setPageSocialPosition({ position: e.target.value }));
     } catch (error) {
@@ -21,7 +21,7 @@ function EditSocial({ page }) {
   };
   const handleOnChangeStyle = async (e) => {
     try {
-      const response = await http.postWithAuth(`${apiUrl}/social/style`, { style: e.target.value });
+      const response = await http.postWithAuth(`${apiUrl}/social/style`, { body: { style: e.target.value } });
 
       if (response.status) dispatch(setPageSocialStyle({ style: e.target.value }));
     } catch (error) {
