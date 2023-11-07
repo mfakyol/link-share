@@ -1,0 +1,52 @@
+.radioButtonGroup {
+  display: flex;
+  flex-direction: column;
+  & > .radioButton {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+
+    & > .radioButtonInput {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+
+      &:checked + .radioButtonContent {
+        & > .radioButtonCircle::before {
+          content: "";
+          display: block;
+          width: 8px;
+          height: 8px;
+          margin: 2px;
+          background-color: var(--text-color);
+          border-radius: 50%;
+        }
+      }
+
+      &:focus + .radioButtonContent {
+        & > .radioButtonCircle {
+          outline: 2px solid var(--blue);
+          outline-offset: 2px;
+        }
+      }
+    }
+
+    .radioButtonContent {
+      display: flex;
+      align-items: center;
+      font-size: 0.875rem;
+      font-weight: 400;
+
+      & > .radioButtonCircle {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 2px solid var(--border-color);
+        margin-right: 8px;
+      }
+    }
+  }
+}

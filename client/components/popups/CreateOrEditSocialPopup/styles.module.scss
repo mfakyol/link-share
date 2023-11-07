@@ -1,0 +1,52 @@
+.container {
+  max-width: 550px;
+  width: 100%;
+  max-height: calc(100% - 64px);
+
+  .title {
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+  }
+}
+
+.socials {
+  overflow: auto;
+
+  & > .social {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    & > .socialIcon {
+      margin-right: 8px;
+      width: 24px;
+      height: 24px;
+      filter: red;
+    }
+
+    & > .socialText {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+}
+
+.example {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 16px;
+
+  .exampleText {
+    font-size: 13px;
+    color: #666;
+  }
+}

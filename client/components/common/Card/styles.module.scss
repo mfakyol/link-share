@@ -1,0 +1,23 @@
+.card {
+  margin-bottom: 2rem;
+
+  & > .title {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 1.125rem;
+
+    @media screen and (max-width:767px) {
+      font-size: 1rem;
+    }
+  }
+
+  & > .body {
+    border-radius: 10px;
+    padding: 2rem;
+    background-color: var(--primary-bg-color);
+
+    @media screen and (max-width:767px) {
+      padding: 1rem;
+    }
+  }
+}

@@ -1,0 +1,82 @@
+.container {
+  width: calc(100vmin - 32px);
+  max-width: 600px;
+
+  .contentWrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+
+
+    .contentContainer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+ 
+
+
+      & > .cropperContainer {
+        position: relative;
+        flex: 1;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+
+      & > .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 16px;
+
+        & > .button {
+          width: calc(50% - 8px);
+          height: 44px;
+        }
+      }
+  
+      & > .uploadContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border: 1px dashed #333;
+        border-radius: 10px;
+  
+        & > .uploadInput {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          z-index: 1;
+          cursor: pointer;
+        }
+  
+        & > .uploadInfo {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+  
+          & > .uploadImageIcon {
+            width: 48px;
+            height: 48px;
+            fill: #333;
+          }
+  
+          & > .uploadInfoText {
+            margin-top: 16px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+ 
+
+ 
+  }
+}

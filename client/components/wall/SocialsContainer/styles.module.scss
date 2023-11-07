@@ -1,0 +1,39 @@
+.socialsContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  &.up {
+    margin-bottom: 8px;
+  }
+
+  &.down {
+    margin-top: 8px;
+  }
+
+  & > .social {
+    margin: 8px;
+
+    & > .iconWrapper {
+      width: 24px;
+      height: 24px;
+
+      & > svg {
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+        fill: var(--icon-color);
+      }
+
+      filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.2));
+      transition: 0.1s;
+
+      &:hover {
+        transform: translate(1px, 1px);
+        filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.2));
+      }
+    }
+  }
+}

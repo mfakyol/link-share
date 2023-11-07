@@ -1,0 +1,97 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  height: 2.75rem;
+  border-radius: 10px;
+  width: 100%;
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+
+  &:disabled {
+    background-color: var(--disable-color) !important;
+    cursor: not-allowed;
+  }
+
+  &:hover {
+    background-color: #fcfcfc;
+  }
+
+  &:active {
+    background-color: #fff;
+  }
+
+  &.loading {
+    cursor: wait;
+  }
+
+  &.blue {
+    background-color: var(--blue);
+    color: #fff;
+
+    &:hover {
+      background-color: var(--blue-light);
+    }
+
+    &:active {
+      background-color: var(--blue);
+    }
+  }
+
+  &.red {
+    background-color: var(--red);
+    color: #fff;
+
+    &:hover {
+      background-color: var(--red-light);
+    }
+
+    &:active {
+      background-color: var(--blue);
+    }
+  }
+
+  &.green {
+    background-color: var(--green);
+    color: #fff;
+
+    &:hover {
+      background-color: var(--green-light);
+    }
+
+    &:active {
+      background-color: var(--green);
+    }
+  }
+  &.yellow {
+    background-color: var(--yellow);
+    color: #fff;
+
+    &:hover {
+      background-color: var(--yellow-light);
+    }
+
+    &:active {
+      background-color: var(--yellow);
+    }
+  }
+
+  & > .loadingIcon {
+    width: 1.125rem;
+    height: 1.125rem;
+    fill: #fff;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

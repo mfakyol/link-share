@@ -1,0 +1,15 @@
+@font-face {
+  font-family: PTSans;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/PTSans/Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: PTSans;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/PTSans/Bold.ttf") format("truetype");
+}

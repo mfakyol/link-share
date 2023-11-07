@@ -1,0 +1,80 @@
+.page {
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  .main {
+    height: 100vh;
+  }
+  
+  .section1 {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 150px 64px 64px;
+    background-color: #f75ba0;
+    background: linear-gradient(135deg, #f75ba0 0%, #ec791e 100%);
+  
+    & > .shape1Container {
+      position: absolute;
+      top: 25%;
+      left: 5%;
+      height: 60%;
+  
+      & > .shape1 {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  
+    & > .shape2Container {
+      position: absolute;
+      top: 25%;
+      right: 5%;
+      height: 60%;
+  
+      & > .shape2 {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  
+    & > .sloganContainer {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 60%;
+  
+      & > .title {
+        text-align: center;
+        color: #fff;
+        font-size: 64px;
+        font-weight: 600;
+        max-width: 600px;
+      }
+      & > .description {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 600;
+        margin-top: 48px;
+        max-width: 600px;
+      }
+    }
+  
+    & > .phoneContainer {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40%;
+      height: 100%;
+    }
+  }
+  

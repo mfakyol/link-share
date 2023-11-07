@@ -1,0 +1,82 @@
+.wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.createButton {
+  margin-bottom: 2rem;
+}
+
+.socials {
+  margin-bottom: 2rem;
+}
+
+.socialContainer {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-bg-color);
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+
+  &[aria-pressed] {
+    position: relative;
+    z-index: 1;
+  }
+
+  & > .dragHandle {
+    display: flex;
+    align-items: center;
+    cursor: grab;
+    padding: 12px;
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    & > .dragIcon {
+      width: 1.5rem;
+      height: 1.5rem;
+      fill: var(--text-color);
+    }
+  }
+
+  & > .detail {
+    display: flex;
+    align-items: center;
+
+    & > .socialIcon {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 0.5rem;
+    }
+
+    & > .socialText {
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+  }
+
+  & > .actions {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 0.75rem;
+
+    & > .penIcon {
+      width: 1.125rem;
+      height: 1.125rem;
+      cursor: pointer;
+      margin-left: 0.5rem;
+      fill: var(--text-color);
+    }
+
+    & > .trashIcon {
+      width: 1.125rem;
+      height: 1.125rem;
+      cursor: pointer;
+      margin-left: 0.5rem;
+      fill: var(--text-color);
+    }
+  }
+}

@@ -1,0 +1,40 @@
+:root {
+  --blue: #3498db;
+  --blue-light: hsl(204, 70%, 63%);
+  --blue-lighter: hsl(204, 70%, 73%);
+  --blue-lighten: hsl(204, 70%, 83%);
+
+  --green: hsl(145, 63%, 49%);
+  --green-light: hsl(145, 63%, 59%);
+  --green-lighter: hsl(145, 63%, 69%);
+  --green-lighten: hsl(145, 63%, 79%);
+
+  --red: hsl(6, 78%, 57%);
+  --red-light: hsl(6, 78%, 67%);
+  --red-lighter: hsl(6, 78%, 77%);
+  --red-lighten: hsl(6, 78%, 87%);
+
+  --yellow: hsl(37, 90%, 51%);
+  --yellow-light: hsl(37, 90%, 61%);
+  --yellow-lighter: hsl(37, 90%, 71%);
+  --yellow-lighten: hsl(37, 90%, 81%);
+
+  --text-color: #333;
+  --body-bg-color: #f2f5f8;
+  --primary-bg-color: #fff;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 0px 6px rgba(40, 40, 40, 0.1);
+  --overlay-color: rgba(0, 0, 0, 0.3);
+
+  --disable-color: #d0d0d0;
+}
+:root.dark {
+  --text-color: #fff;
+  --body-bg-color: #121212;
+  --primary-bg-color: #1b1b1b;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --box-shadow: 0 0px 6px rgba(40, 40, 40, 0.1);
+  --overlay-color: rgba(0, 0, 0, 0.6);
+  --disable-color: #808080;
+  color-scheme: dark;
+}

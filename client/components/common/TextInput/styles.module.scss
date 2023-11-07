@@ -1,0 +1,117 @@
+.wrapper {
+  width: 100%;
+  margin-bottom: 1rem;
+
+  & > .textInput {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 2.75rem;
+    background-color: var(--primary-bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+
+    &.focus {
+      border-color: var(--blue);
+    }
+
+    &.error {
+      border-color: var(--red);
+      background-color: var(--red-lighten);
+    }
+
+    & > .prefix {
+      padding-left: 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    & > .input {
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      border-radius: 10px;
+      padding-left: 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      outline: none;
+      color: var(--primary-color);
+      
+      &.withPrefix {
+        padding-left: 0;
+      }
+
+      &::placeholder {
+        color: #666;
+      }
+    }
+
+    & > .eyeContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      margin: 0 8px;
+      pointer-events: none;
+
+      & > .eyeIcon {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: #333;
+        cursor: pointer;
+        pointer-events: all;
+      }
+    }
+  }
+
+  .statusContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-right: 0.5rem;
+    pointer-events: none;
+
+    & > .statusIcon {
+      width: 1.125rem;
+      height: 1.125rem;
+      fill: #666;
+      pointer-events: all;
+      user-select: none;
+
+      &.successIcon {
+        fill: var(--green);
+      }
+
+      &.errorIcon {
+        fill: var(--red);
+      }
+
+      &.loadingIcon {
+        fill: #333;
+        animation: spin 1s linear infinite;
+      }
+    }
+  }
+
+  & > .errorText {
+    margin-top: 0.25rem;
+    margin-left: 0.25rem;
+    color: var(--red);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

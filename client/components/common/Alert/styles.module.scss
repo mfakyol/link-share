@@ -1,0 +1,28 @@
+.alert {
+  display: flex;
+  color: #fff;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+
+  &.error {
+    background-color: var(--red);
+  }
+
+  & > .text {
+    flex: 1;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.125rem;
+    padding: 0.5rem 0;
+    margin-left: 1rem;
+  }
+
+  & > .closeIcon {
+    width: 1.125rem;
+    height: 1.125rem;
+    padding: 0.25rem;
+    cursor: pointer;
+    fill: #fff;
+    margin: 0.5rem;
+  }
+}

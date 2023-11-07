@@ -1,0 +1,48 @@
+.buttonStyle {
+  width: calc(100% / 3 - 20px);
+  height: 36px;
+
+  &.selected {
+    outline: 2px solid #333;
+    outline-offset: 5px;
+    outline-style: hidden;
+  }
+
+  &.fill,
+  &.fillRound,
+  &.fillFullRound {
+    background-color: #000;
+  }
+
+  &.outline,
+  &.outlineRound,
+  &.outlineFullRound {
+    border: 1px solid #000;
+  }
+
+  &.shadow,
+  &.shadowRound,
+  &.shadowFullRound {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  &.hardShadow,
+  &.hardShadowRound,
+  &.hardShadowFullRound {
+    box-shadow: 0 0 0 1px #000, 4px 4px 0 1px #000;
+  }
+
+  &.fillRound,
+  &.outlineRound,
+  &.shadowRound,
+  &.hardShadowRound {
+    border-radius: 10px;
+  }
+
+  &.fillFullRound,
+  &.outlineFullRound,
+  &.shadowFullRound,
+  &.hardShadowFullRound {
+    border-radius: 18px;
+  }
+}
