@@ -1,9 +1,10 @@
 import { useRouter } from "next/router";
 import classes from "./styles.module.scss";
-import AppearanceContent from "@/view/DasboardView/AppearanceContent";
+import LinksContent from "@/view/DasboardView/LinksContent";
 import SettingsPage from "@/view/DasboardView/SettingsContent";
 import SocialsContent from "@/view/DasboardView/SocialsContent";
-import LinksContent from "@/view/DasboardView/LinksContent";
+import AppearanceContent from "@/view/DasboardView/AppearanceContent";
+import MyAccountContent from "@/view/DasboardView/MyAccountContent";
 
 interface SelectDasboardContentProps {
   pageSetting: PageSetting;
@@ -14,6 +15,7 @@ function SelectDasboardContent({ pageSetting }: SelectDasboardContentProps) {
 
   const tab = router.query.slug?.[0] || "";
   let Content;
+  console.log(tab)
 
   switch (tab) {
     case "appearance":

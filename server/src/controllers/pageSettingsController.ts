@@ -155,9 +155,8 @@ async function sortLink(req: Request, res: Response) {
 async function updateTitle(req: Request, res: Response) {
   try {
     let { title } = req.body;
-    if (!title) return badRequestResponse(req, res);
 
-    title = new String(title).trim();
+    title = new String(title || "").trim();
     if (title.length > 50) return errorMessageResponse(req, res, 'max_title_length_must_be_50_character');
 
     const pageSetting = await PageSettingModel.findOne({ userId: req.session.userId });

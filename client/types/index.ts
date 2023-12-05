@@ -54,3 +54,11 @@ type Background = {
   name: string;
   placeholderImage: String;
 };
+
+type Lang = "en" | "tr" | "de";
+type LangOpiton = { id: Lang; label: string };
+
+type AccounData = {
+  username: string;
+  email: string;
+};

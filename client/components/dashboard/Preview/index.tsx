@@ -1,18 +1,20 @@
-import EyeOpenIcon from "@/icons/EyeOpenIcon";
+import { pageDomain } from "@/config";
 import classes from "./styles.module.scss";
-import { domain } from "@/config";
-import { MouseEvent, useCallback, useEffect, useState } from "react";
+import EyeOpenIcon from "@/icons/EyeOpenIcon";
+import { MouseEvent, useCallback, useEffect, useRef, useState } from "react";
 
 interface PreviewProps {
   pageSetting: PageSetting;
 }
 
 function Preview({ pageSetting }: PreviewProps) {
+  const ref = useRef<HTMLIFrameElement>(null);
   const [showPreview, setShowPreview] = useState(false);
   const [iFrameVersion, setIFrameVersion] = useState(1);
+  const [s, setS] = useState(false);
 
   useEffect(() => {
-    setIFrameVersion((prev) => ++prev);
+    if (ref.current) ref.current.src = `${pageDomain}/p/${pageSetting.username}?dashboard=true`;
   }, [pageSetting]);
 
   const handleClickPreview = useCallback((e: MouseEvent) => {
@@ -24,7 +26,8 @@ function Preview({ pageSetting }: PreviewProps) {
       <div className={`${classes.phoneWrapper} ${showPreview ? classes.mobileShow : ""}`}>
         <div className={classes.phoneContainer}>
           <div className={classes.phoneFrame}>
-            {pageSetting && <iframe key={iFrameVersion} src={`${domain}/${pageSetting.username}?dashboard=true&version=${iFrameVersion}`} className={classes.iframe} />}
+            {!s && "x"}
+            {pageSetting && <iframe ref={ref} key={iFrameVersion} className={classes.iframe} onLoad={setS.bind(null, true)} />}
           </div>
         </div>
       </div>

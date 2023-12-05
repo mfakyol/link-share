@@ -1,0 +1,15 @@
+@font-face {
+  font-family: WindSong;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/p/fonts/WindSong/Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: WindSong;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/p/fonts/WindSong/Medium.ttf") format("truetype");
+}

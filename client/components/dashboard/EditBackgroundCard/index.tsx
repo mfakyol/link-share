@@ -1,13 +1,13 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import classes from "./styles.module.scss";
 import Card from "@/components/common/Card";
-import { setPageSetting } from "@/store/dashboardSlice";
-import pageSettingService from "@/services/pageSettingService";
-
-import { generateGradient } from "@/utils/generateGradient";
-import ColorInput from "@/components/common/ColorInput";
 import Label from "@/components/common/Label";
+import { setPageSetting } from "@/store/dashboardSlice";
+import ColorInput from "@/components/common/ColorInput";
+import { generateGradient } from "@/utils/generateGradient";
+import pageSettingService from "@/services/pageSettingService";
+import { useTranslation } from "@/contexts/TranslationContext";
 import RadioButtonGroup from "@/components/common/RadioButtonGroup";
 
 interface EditBackgroundCardProps {
@@ -16,11 +16,12 @@ interface EditBackgroundCardProps {
 
 const backgroundTypes = ["flat", "gradient"];
 const gradientType = [
-  { value: "up", label: "Up" },
-  { value: "down", label: "Down" },
+  { value: "up", label: "up" },
+  { value: "down", label: "down" },
 ];
 
 function EditBackgroundCard({ pageSetting }: EditBackgroundCardProps) {
+  const [t] = useTranslation();
   const dispatch = useDispatch();
 
   const handleClickBackgroundType = useCallback(
@@ -57,7 +58,7 @@ function EditBackgroundCard({ pageSetting }: EditBackgroundCardProps) {
   
 
   return (
-    <Card title="Background">
+    <Card title="background">
       <div className={classes.backgrounds}>
         {backgroundTypes.map((backgroundType) => (
           <div
@@ -68,9 +69,9 @@ function EditBackgroundCard({ pageSetting }: EditBackgroundCardProps) {
           ></div>
         ))}
       </div>
-      <Label htmlFor="gradient-direction">Gradient Direction</Label>
+      <Label htmlFor="gradient-direction">{t("gradient_direction")}</Label>
       <RadioButtonGroup options={gradientType} name="gradient-direction" value={pageSetting.colors.gradientDirection} onChange={handleChangeGradientDirection} />
-      <Label htmlFor="background-color">Background Color</Label>
+      <Label htmlFor="background-color">{t("background_color")}</Label>
       <ColorInput id="background-color" value={pageSetting.colors.backgroundColor} onChange={handleChangeBackgroundColor} /> 
     </Card>
   );

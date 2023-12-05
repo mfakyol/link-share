@@ -1,26 +1,27 @@
-import { MouseEvent, useCallback, useState } from "react";
+import PenIcon from "@/icons/PenIcon";
+import DragIcon from "@/icons/DragIcon";
 import classes from "./page.module.scss";
+import { CSS } from "@dnd-kit/utilities";
+import TrashIcon from "@/icons/TrashIcon";
+import { useDispatch } from "react-redux";
 import Button from "@/components/common/Button";
+import Switch from "@/components/common/Switch";
+import socialTypes from "@/constants/socialTypes";
+import { MouseEvent, useCallback, useState } from "react";
+import pageSettingService from "@/services/pageSettingService";
+import { useTranslation } from "@/contexts/TranslationContext";
+import { setPageSetting, sortSocials } from "@/store/dashboardSlice";
+import CreateOrEditSocialPopup from "@/components/popups/CreateOrEditSocialPopup";
+import EditSocialIconStyleCard from "@/components/dashboard/EditSocialIconStyleCard";
 import { SortableContext, useSortable, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { DndContext, DragEndEvent, MouseSensor, TouchSensor, closestCenter, useSensor, useSensors } from "@dnd-kit/core";
-import DragIcon from "@/icons/DragIcon";
-import { CSS } from "@dnd-kit/utilities";
-import CreateOrEditSocialPopup from "@/components/popups/CreateOrEditSocialPopup";
-import Switch from "@/components/common/Switch";
-import PenIcon from "@/icons/PenIcon";
-import TrashIcon from "@/icons/TrashIcon";
-import pageSettingService from "@/services/pageSettingService";
-import { useDispatch } from "react-redux";
-import { setPageSetting, sortSocials } from "@/store/dashboardSlice";
-import EditSocialIconStyleCard from "@/components/dashboard/EditSocialIconStyleCard";
-
-import socialTypes from '@/constants/socialTypes'
 
 interface SocialsContentProps {
   pageSetting: PageSetting;
 }
 
 function SocialsContent({ pageSetting }: SocialsContentProps) {
+  const [t] = useTranslation();
   const dispatch = useDispatch();
   const [popupData, setPopupData] = useState<{ show: boolean; social?: PageSetting["socials"][number] }>({ show: false });
 
@@ -32,11 +33,11 @@ function SocialsContent({ pageSetting }: SocialsContentProps) {
     async (event: DragEndEvent) => {
       const { active, over } = event;
       if (!over || active.id === over.id) return;
-      dispatch(sortSocials({ activeId: active.id as number  , overId: over.id as number  }));
-      const response = await pageSettingService.sortSocials(active.id as number  , over.id as number  );
+      dispatch(sortSocials({ activeId: active.id as number, overId: over.id as number }));
+      const response = await pageSettingService.sortSocials(active.id as number, over.id as number);
       if (!response.status) {
         // will show error
-        dispatch(sortSocials({ activeId: over.id as number , overId: active.id as number  }));
+        dispatch(sortSocials({ activeId: over.id as number, overId: active.id as number }));
       }
     },
     [dispatch]
@@ -76,7 +77,7 @@ function SocialsContent({ pageSetting }: SocialsContentProps) {
   return (
     <div className={classes.wrapper}>
       <Button color="blue" className={classes.createButton} onClick={handleClickCreateSocial}>
-        Create New Social
+        {t("create_new_social")}
       </Button>
 
       <div className={classes.socials}>
@@ -110,7 +111,7 @@ function SocialItem({ social, onChangeActive, onClickEdit, onClickDelete }: any)
     transform: CSS.Transform.toString(transform),
   };
 
-  const socialType = socialTypes.find(st => st.type === social.type)
+  const socialType = socialTypes.find((st) => st.type === social.type);
   return (
     <div ref={setNodeRef} className={classes.socialContainer} style={style} {...attributes}>
       <div className={classes.dragHandle} {...listeners}>

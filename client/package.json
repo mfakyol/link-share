@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3002",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -16,6 +16,7 @@
     "@types/js-cookie": "^3.0.5",
     "@types/node": "20.7.0",
     "@types/react": "18.2.23",
+    "@types/react-datepicker": "^4.19.3",
     "@types/react-dom": "18.2.8",
     "@types/uuid": "^9.0.6",
     "cookie": "^0.5.0",
@@ -24,6 +25,7 @@
     "js-cookie": "^3.0.5",
     "next": "13.5.3",
     "react": "18.2.0",
+    "react-datepicker": "^4.23.0",
     "react-dom": "18.2.0",
     "react-easy-crop": "^5.0.2",
     "react-redux": "^8.1.2",

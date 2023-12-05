@@ -10,6 +10,7 @@ function UserRouter() {
     router.post('/register', jsonParserMiddleware, userController.register);
     router.get('/isEmailExist', jsonParserMiddleware, userController.isEmailExist);
     router.get('/isUsernameExist', jsonParserMiddleware, userController.isUsernameExist);
+    router.get('/accountData', jsonParserMiddleware, userController.getAccountData);
 
     return router;
   };

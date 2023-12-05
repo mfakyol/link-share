@@ -1,0 +1,15 @@
+@font-face {
+  font-family: SofiaSans;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/p/fonts/Raleway/Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: SofiaSans;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/p/fonts/SofiaSans/SemiBold.ttf") format("truetype");
+}

@@ -1,0 +1,121 @@
+.accountDropdown {
+  position: relative;
+
+  & > .dropdownButton {
+    background-color: transparent;
+    border-radius: 50%;
+  }
+
+  & > .listContainer {
+    position: absolute;
+    right: -.5rem;
+    top: calc(100% + 0.25rem);
+    z-index: 1;
+    background-color: var(--primary-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    width: 100vw;
+    max-width: 240px;
+    flex-direction: column;
+    display: none;
+
+    &.show {
+      display: flex;
+    }
+
+    & > .optionsHeader {
+      display: flex;
+      padding: 0.5rem .75rem;
+      border-bottom: 1px solid var(--border-color);
+      align-items: center;
+
+      & > .accountInfo {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin-left: 0.5rem;
+        width: 100%;
+
+        & > .title {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-weight: 600;
+          margin-bottom: .25rem;
+        }
+
+        & > .link {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: 0.75rem;
+          color: var(--disable-color);
+          text-decoration: underline;
+        }
+      }
+
+      & > .optionsHeaderBack {
+        width: 2;
+        height: 2rem;
+        padding: .4rem;
+        transform: rotate(90deg);
+        fill: var(--text-color);
+        cursor: pointer;
+        border-radius: .25rem;
+
+        &:hover {
+            background-color: var(--body-bg-color);
+        }
+      }
+
+      & > .optionsHeaderTitle {
+        margin-left: 0.5rem;
+      }
+    }
+
+    & > .options {
+      display: flex;
+      flex-direction: column;
+      padding: 0.75rem;
+      width: 100%;
+
+
+      & > .option {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0 0.5rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        height: 2.5rem;
+
+        &:hover {
+          background-color: var(--body-bg-color);
+        }
+
+        &.selected {
+          background-color: var(--blue);
+          color: #fff;
+
+          & > .themeIcon {
+            fill: #fff;
+          }
+
+          &:hover {
+            background-color: var(--blue-light);
+          }
+        }
+
+        & > .optionText {
+          margin-left: 8px;
+          font-size: 0.875rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+.themeIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--text-color);
+}

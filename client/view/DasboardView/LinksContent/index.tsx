@@ -1,23 +1,25 @@
+import PenIcon from "@/icons/PenIcon";
+import DragIcon from "@/icons/DragIcon";
+import { CSS } from "@dnd-kit/utilities";
+import TrashIcon from "@/icons/TrashIcon";
+import { useDispatch } from "react-redux";
 import classes from "./styles.module.scss";
 import { useCallback, useState } from "react";
 import Switch from "@/components/common/Switch";
-import TrashIcon from "@/icons/TrashIcon";
-import { DndContext, DragEndEvent, closestCenter, useSensor, useSensors, MouseSensor, TouchSensor } from "@dnd-kit/core";
-import { SortableContext, verticalListSortingStrategy, useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
-import DragIcon from "@/icons/DragIcon";
 import Button from "@/components/common/Button";
-import CreateOrEditLinkPopup from "@/components/popups/CreateOrEditLinkPopup";
-import { useDispatch } from "react-redux";
-import PenIcon from "@/icons/PenIcon";
-import { deleteLink, setPageSetting, sortLinks, updateLink } from "@/store/dashboardSlice";
+import { useTranslation } from "@/contexts/TranslationContext";
 import pageSettingService from "@/services/pageSettingService";
+import CreateOrEditLinkPopup from "@/components/popups/CreateOrEditLinkPopup";
+import { deleteLink, setPageSetting, sortLinks, updateLink } from "@/store/dashboardSlice";
+import { SortableContext, verticalListSortingStrategy, useSortable } from "@dnd-kit/sortable";
+import { DndContext, DragEndEvent, closestCenter, useSensor, useSensors, MouseSensor, TouchSensor } from "@dnd-kit/core";
 
 interface LinksContentProps {
   pageSetting: PageSetting;
 }
 
 function LinksContent({ pageSetting }: LinksContentProps) {
+  const [t] = useTranslation();
   const dispatch = useDispatch();
 
   const [popupData, setPopupData] = useState<{ show: boolean; link?: PageSetting["links"][number] }>({ show: false });
@@ -73,7 +75,7 @@ function LinksContent({ pageSetting }: LinksContentProps) {
   return (
     <div className={classes.wrapper}>
       <Button color="blue" className={classes.createButton} onClick={setPopupData.bind(null, { show: true })}>
-        Create New Link
+        {t("create_new_link")}
       </Button>
       <div className={classes.links}>
         <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd} sensors={sensors}>

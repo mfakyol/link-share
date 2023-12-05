@@ -2,6 +2,7 @@ import { createPortal } from "react-dom";
 import CloseIcon from "@/icons/CloseIcon";
 import ArrowIcon from "@/icons/ArrowIcon";
 import classes from "./styles.module.scss";
+import { useTranslation } from "@/contexts/TranslationContext";
 import { ForwardedRef, KeyboardEvent, MouseEvent, forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 
 export type Option = {
@@ -25,6 +26,7 @@ interface SelectProps {
 }
 
 function Select({ options = [], onChange, placeholder = "", title = "", id, defaultValue = "" }: SelectProps, ref: ForwardedRef<SelectRef>) {
+  const [t] = useTranslation();
   const optionsContainerRef = useRef<HTMLDivElement>(null);
   const [error, setError] = useState("");
   const [state, setState] = useState({ show: false });
@@ -121,7 +123,7 @@ function Select({ options = [], onChange, placeholder = "", title = "", id, defa
           onKeyDown={handleKeyDown}
           onClick={openOptions}
         >
-          {selected?.label || placeholder || "please_select"}
+          {selected?.label || placeholder || t("please_select")}
           <ArrowIcon className={classes.arrowIcon} />
         </div>
         {error && <p className={classes.errorText}>{error}</p>}
@@ -132,7 +134,7 @@ function Select({ options = [], onChange, placeholder = "", title = "", id, defa
             <div className={classes.overlay} onClick={closeOptions}></div>
             <div className={`${classes.optionsContainer}`}>
               <div className={classes.header}>
-                {<div className={classes.title}>{title || "please_select"}</div>}
+                {<div className={classes.title}>{title || t("please_select")}</div>}
                 <CloseIcon className={classes.closeIcon} onClick={closeOptions} />
               </div>
               <div ref={optionsContainerRef} className={classes.body} onClick={handleClickOption}>

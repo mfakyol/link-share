@@ -1,0 +1,18 @@
+@font-face {
+  font-family: Exo;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:   url("/fonts/Exo/Regular.ttf") format("truetype") ;
+  
+}
+ 
+@font-face {
+  font-family: Exo;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src:   url("/fonts/Exo/SemiBold.ttf") format("truetype") ;
+  
+}
+ 

@@ -7,9 +7,11 @@ import Button from "@/components/common/Button";
 import userService from "@/services/userService";
 import TextInput, { TextInputRef } from "@/components/common/TextInput";
 import { ChangeEventHandler, FormEventHandler, useCallback, useRef, useState } from "react";
+import { useTranslation } from "@/contexts/TranslationContext";
 
 function LoginView() {
   const router = useRouter();
+  const [t] = useTranslation();
 
   const usernameInputRef = useRef<TextInputRef>(null);
   const passwordInputRef = useRef<TextInputRef>(null);
@@ -72,22 +74,22 @@ function LoginView() {
       </header>
       <main className={classes.main}>
         <div className={classes.container}>
-          <h1 className={classes.title}>Login your Links account</h1>
+          <h1 className={classes.title}>{t("login_title")}</h1>
           <form onSubmit={handleSubmit} className={classes.form}>
             <Alert alert={error} type="error" onClose={setError.bind(null, "")} />
-            <TextInput ref={usernameInputRef} prefix="links/" type="text" placeholder="username" onChange={handleChangeUsername} />
-            <TextInput ref={passwordInputRef} type="password" placeholder="Password" onChange={handleChangePassword} />
+            <TextInput ref={usernameInputRef} prefix="links/" type="text" placeholder={t("username")} onChange={handleChangeUsername} />
+            <TextInput ref={passwordInputRef} type="password" placeholder={t("password")} onChange={handleChangePassword} />
             <Link href="/forgot-password" className={classes.forgotPasswordLink}>
-              Forgot Password?
+              {t("forgot_password")}
             </Link>
             <Button color="blue" disabled={!(isUsernameValid && isPasswordValid)} loading={loading}>
-              Login
+              {t("login")}
             </Button>
           </form>
           <p className={classes.dontHaveAccount}>
-            Dont have an account?{" "}
+           {t("dont_have_an_account")}{" "}
             <Link href="/signup" className={classes.registerLink}>
-              Sign up now.
+             {t("sign_up_now")}
             </Link>
           </p>
         </div>

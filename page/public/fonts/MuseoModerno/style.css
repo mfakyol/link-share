@@ -1,0 +1,15 @@
+@font-face {
+  font-family: MuseoModerno;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/p/fonts/MuseoModerno/Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: MuseoModerno;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/p/fonts/MuseoModerno/SemiBold.ttf") format("truetype");
+}

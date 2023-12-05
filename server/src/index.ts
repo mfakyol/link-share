@@ -12,7 +12,8 @@ async function startServer() {
   connectDB();
   const app = express();
   const session = sessionMiddleware();
-  app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+  // app.use(cors({ origin: ['http://localhost:3002', 'http://localhost:3003'], credentials: true }));
+  app.use(cors({ origin:(_, cb) => {cb(null,true)}, credentials: true }));
   app.use(express.static('public'));
   app.use(helmet());
   app.use(session);

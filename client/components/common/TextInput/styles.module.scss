@@ -61,7 +61,7 @@
       & > .eyeIcon {
         width: 1.5rem;
         height: 1.5rem;
-        fill: #333;
+        fill: var(--disable-color);
         cursor: pointer;
         pointer-events: all;
       }

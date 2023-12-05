@@ -1,5 +1,6 @@
-import { MouseEvent, useCallback } from "react";
 import classes from "./styles.module.scss";
+import { MouseEvent, useCallback } from "react";
+import { useTranslation } from "@/contexts/TranslationContext";
 
 type Value = number | string;
 export type RadioButtonGroupOption = { value: Value; label: string };
@@ -12,6 +13,8 @@ interface RadioButtonGroupProps {
 }
 
 function RadioButtonGroup({ value, name, onChange, options }: RadioButtonGroupProps) {
+  const [t] = useTranslation();
+
   const handleChange = useCallback(
     (value: Value, e: MouseEvent) => {
       onChange?.(value);
@@ -33,7 +36,7 @@ function RadioButtonGroup({ value, name, onChange, options }: RadioButtonGroupPr
           />
           <div className={classes.radioButtonContent}>
             <div className={classes.radioButtonCircle}></div>
-            {option.label}
+            {t(option.label)}
           </div>
         </label>
       ))}

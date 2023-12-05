@@ -5,16 +5,17 @@ import Label from "@/components/common/Label";
 import ColorInput from "@/components/common/ColorInput";
 import { setPageSetting } from "@/store/dashboardSlice";
 import pageSettingService from "@/services/pageSettingService";
+import { useTranslation } from "@/contexts/TranslationContext";
 import RadioButtonGroup from "@/components/common/RadioButtonGroup";
 
 const positionOptions = [
-  { label: "Up", value: "up" },
-  { label: "Down", value: "down" },
+  { label: "up", value: "up" },
+  { label: "down", value: "down" },
 ];
 const styleOptions = [
-  { label: "Outline", value: "outline" },
-  { label: "Fill", value: "fill" },
-  { label: "Color", value: "color" },
+  { label: "outline", value: "outline" },
+  { label: "fill", value: "fill" },
+  { label: "color", value: "color" },
 ];
 
 interface EditSocialIconStyleCardProps {
@@ -22,6 +23,7 @@ interface EditSocialIconStyleCardProps {
 }
 
 function EditSocialIconStyleCard({ pageSetting }: EditSocialIconStyleCardProps) {
+  const [t] = useTranslation();
   const dispatch = useDispatch();
 
   const handleChangeSocialIconPosition = useCallback(
@@ -57,17 +59,12 @@ function EditSocialIconStyleCard({ pageSetting }: EditSocialIconStyleCardProps) 
   );
 
   return (
-    <Card title="Social Icon Style">
-      <Label htmlFor="icon-position">Icons Position</Label>
-      <RadioButtonGroup
-        options={positionOptions}
-        name="icon-position"
-        value={pageSetting.socialsPositon}
-        onChange={handleChangeSocialIconPosition}
-      />
-      <Label htmlFor="icon-style">Icons Position</Label>
+    <Card title={t("social_icon_style")}>
+      <Label htmlFor="icon-position">{t("icon_position")}</Label>
+      <RadioButtonGroup options={positionOptions} name="icon-position" value={pageSetting.socialsPositon} onChange={handleChangeSocialIconPosition} />
+      <Label htmlFor="icon-style">{t("icon_style")}</Label>
       <RadioButtonGroup options={styleOptions} name="icon-style" value={pageSetting.socialsIconStyle} onChange={handleChangeSocialIconStyle} />
-      <Label htmlFor="icon-color">Icons Color</Label>
+      <Label htmlFor="icon-color">{t("icon_color")}</Label>
       <ColorInput id="icon-color" value={pageSetting.socialsIconColor} onChange={handleChangeSocialsIconColor} />
     </Card>
   );

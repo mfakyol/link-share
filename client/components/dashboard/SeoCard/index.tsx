@@ -1,17 +1,18 @@
-import Card from "@/components/common/Card";
-import classes from "./styles.module.scss";
-import Label from "@/components/common/Label";
-import TextInput from "@/components/common/TextInput";
-import { FocusEvent, useCallback } from "react";
-import pageSettingService from "@/services/pageSettingService";
 import { useDispatch } from "react-redux";
+import Card from "@/components/common/Card";
+import Label from "@/components/common/Label";
+import { FocusEvent, useCallback } from "react";
+import TextInput from "@/components/common/TextInput";
 import { setPageSetting } from "@/store/dashboardSlice";
+import pageSettingService from "@/services/pageSettingService";
+import { useTranslation } from "@/contexts/TranslationContext";
 
 interface SeoCardProps {
   pageSetting: PageSetting;
 }
 
 function SeoCard({ pageSetting }: SeoCardProps) {
+  const [t] = useTranslation();
   const dispatch = useDispatch();
 
   const handleBlurInput = useCallback(
@@ -30,12 +31,12 @@ function SeoCard({ pageSetting }: SeoCardProps) {
 
   return (
     <Card title="SEO">
-      <Label htmlFor="meta-title">Meta Title</Label>
-      <TextInput id="meta-title" placeholder="Title" defaultValue={pageSetting.meta.title} onBlur={handleBlurInput.bind(null, "title")} />
-      <Label htmlFor="meta-description">Meta Description</Label>
+      <Label htmlFor="meta-title">{t("meta_title")}</Label>
+      <TextInput id="meta-title" placeholder={t("meta_title")} defaultValue={pageSetting.meta.title} onBlur={handleBlurInput.bind(null, "title")} />
+      <Label htmlFor="meta-description">{t("meta_description")}</Label>
       <TextInput
         id="meta-description"
-        placeholder="Description"
+        placeholder={t("meta_description")}
         defaultValue={pageSetting.meta.description}
         onBlur={handleBlurInput.bind(null, "description")}
       />

@@ -6,8 +6,12 @@ interface ButtonStyleProps {
 }
 
 function ButtonStyle({ selectedButtonStyle, buttonStyle }: ButtonStyleProps) {
- 
-  return <div className={`${classes.buttonStyle} ${classes[buttonStyle]} ${selectedButtonStyle === buttonStyle ? classes.selected : ""}`} data-button-style={buttonStyle}></div>;
+  return (
+    <div
+      className={`${classes.buttonStyle} ${classes[buttonStyle]} ${selectedButtonStyle === buttonStyle ? classes.selected : ""}`}
+      data-button-style={buttonStyle}
+    ></div>
+  );
 }
 
 export default ButtonStyle;

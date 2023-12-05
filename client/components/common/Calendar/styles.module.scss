@@ -1,0 +1,130 @@
+.wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.calendar {
+  position: absolute;
+  top: 3rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 18.5rem;
+  background-color: var(--primary-bg-color);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.calendarHeader {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  margin-bottom: 1rem;
+
+  & > .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+
+    &.arrowLeft {
+      left: 0;
+
+      & > .arrowIcon {
+        transform: rotate(90deg);
+      }
+    }
+
+    &.arrowRight {
+      right: 0;
+
+      & > .arrowIcon {
+        transform: rotate(-90deg);
+      }
+    }
+
+    & > .arrowIcon {
+      width: 1.25rem;
+      height: 1.25rem;
+      fill: var(--disable-color);
+    }
+  }
+
+  & > .label {
+    user-select: none;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+}
+
+.calendarGrid {
+  display: flex;
+  flex-direction: column;
+
+  & > .weekDays {
+    display: flex;
+    user-select: none;
+    font-size: 0.875rem;
+
+    & > .weekDay {
+      display: block;
+      width: 2.5rem;
+      height: 1.5rem;
+      text-align: center;
+      color: var(--disable-color);
+      font-weight: 600;
+    }
+  }
+
+  & > .row {
+    display: flex;
+    width: 100%;
+
+    & > .cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 10px;
+      user-select: none;
+
+      &.notSameMonth {
+        color: var(--disable-color);
+      }
+
+      &.today {
+        font-weight: 600;
+      }
+
+      &.range {
+        border-radius: 0;
+      }
+
+      &.inRange {
+        background-color: var(--body-bg-color);
+      }
+
+      &.selected {
+        background-color: var(--blue);
+        color: #fff;
+
+        &:hover {
+          background-color: var(--blue-light);
+        }
+      }
+
+      &:hover {
+        background-color: var(--body-bg-color);
+      }
+    }
+  }
+}

@@ -1,13 +1,13 @@
 import { useDispatch } from "react-redux";
 import classes from "./styles.module.scss";
 import Button from "@/components/common/Button";
+import socialTypes from "@/constants/socialTypes";
 import { setPageSetting } from "@/store/dashboardSlice";
 import Popup, { PopupRef } from "@/components/common/Popup";
+import { useTranslation } from "@/contexts/TranslationContext";
 import pageSettingService from "@/services/pageSettingService";
 import TextInput, { TextInputRef } from "@/components/common/TextInput";
 import { FormEventHandler, useCallback, useEffect, useRef, useState } from "react";
-
-import socialTypes from "@/constants/socialTypes";
 
 interface CreateOrEditSocialPopupProps {
   visible: boolean;
@@ -18,6 +18,7 @@ interface CreateOrEditSocialPopupProps {
 type PopupData = { step: number; socialData?: { url?: string; type?: number } };
 
 function CreateOrEditSocialPopup({ visible, social, onClose }: CreateOrEditSocialPopupProps) {
+  const [t] = useTranslation();
   const dispatch = useDispatch();
   const popupRef = useRef<PopupRef>(null);
   const urlInputRef = useRef<TextInputRef>(null);
@@ -62,14 +63,17 @@ function CreateOrEditSocialPopup({ visible, social, onClose }: CreateOrEditSocia
     [dispatch, popupData]
   );
 
-  const getTitle = useCallback((popupData: PopupData) => {
-    if (popupData.step == 1) return "Create New Social Link";
-    return popupData.socialData
-      ? `Update ${socialTypes.find((st) => st.type === popupData.socialData?.type)?.label} Link`
-      : `Create ${socialTypes.find((st) => st.type === popupData.socialData?.type)?.label} Link`;
-  }, []);
+  const getTitle = useCallback(
+    (popupData: PopupData) => {
+      if (popupData.step == 1) return t("create_new_social");
+      return popupData.socialData
+        ? `Update ${socialTypes.find((st) => st.type === popupData.socialData?.type)?.label} Link`
+        : `Create ${socialTypes.find((st) => st.type === popupData.socialData?.type)?.label} Link`;
+    },
+    [t]
+  );
 
-  const selectedSocial = socialTypes.find((st) => st.type == social?.type);
+  const selectedSocial = socialTypes.find((st) => st.type == popupData.socialData?.type);
 
   return (
     <Popup
@@ -94,11 +98,11 @@ function CreateOrEditSocialPopup({ visible, social, onClose }: CreateOrEditSocia
           <TextInput ref={urlInputRef} placeholder="Url" defaultValue={popupData.socialData?.url} />
 
           <p className={classes.example}>
-            Example: <span className={classes.exampleText}>{selectedSocial?.examples.join(" or ")}</span>
+            {t("example")}: <span className={classes.exampleText}>{selectedSocial?.examples.join(" or ")}</span>
           </p>
 
           <Button color="blue" loading={isLoading}>
-            {social ? "Update" : "Create"}
+            {t(social ? "update" : "create")}
           </Button>
         </form>
       )}

@@ -2,11 +2,12 @@ import Cropper from "react-easy-crop";
 import { useDispatch } from "react-redux";
 import classes from "./styles.module.scss";
 import getCroppedImg from "@/utils/cropImage";
-import Popup, { PopupRef } from "@/components/common/Popup";
 import Button from "@/components/common/Button";
 import { Point, Area } from "react-easy-crop/types";
 import UploadImageIcon from "@/icons/UploadImageIcon";
 import { setPageSetting } from "@/store/dashboardSlice";
+import Popup, { PopupRef } from "@/components/common/Popup";
+import { useTranslation } from "@/contexts/TranslationContext";
 import pageSettingService from "@/services/pageSettingService";
 import { ChangeEvent, DragEvent, MouseEvent, useCallback, useRef, useState } from "react";
 
@@ -16,6 +17,7 @@ interface CreateLinkPopupProps {
 }
 
 function EditProfileImagePopup({ visible, onClose }: CreateLinkPopupProps) {
+  const [t] = useTranslation();
   const dispatch = useDispatch();
   const popupRef = useRef<PopupRef>(null);
 
@@ -104,7 +106,7 @@ function EditProfileImagePopup({ visible, onClose }: CreateLinkPopupProps) {
   );
 
   return (
-    <Popup ref={popupRef} visible={visible} title="Upload Image" onClose={handleOnClose} containerClassName={classes.container}>
+    <Popup ref={popupRef} visible={visible} title={t("upload_image")} onClose={handleOnClose} containerClassName={classes.container}>
       <div className={classes.contentWrapper}>
         <div className={classes.contentContainer}>
           {imageSrc ? (
@@ -124,7 +126,7 @@ function EditProfileImagePopup({ visible, onClose }: CreateLinkPopupProps) {
               </div>
               <div className={classes.buttons}>
                 <Button className={classes.button} color="red" onClick={handleClickClear}>
-                  Clear
+                  {t("clear")}
                 </Button>
                 <Button
                   className={classes.button}
@@ -132,7 +134,7 @@ function EditProfileImagePopup({ visible, onClose }: CreateLinkPopupProps) {
                   onClick={handleClickConfirm.bind(null, imageSrc, croppedAreaPixels)}
                   loading={loading}
                 >
-                  Confirm
+                  {t("confirm")}
                 </Button>
               </div>
             </>
@@ -148,7 +150,7 @@ function EditProfileImagePopup({ visible, onClose }: CreateLinkPopupProps) {
               />
               <div className={classes.uploadInfo}>
                 <UploadImageIcon className={classes.uploadImageIcon} />
-                <p className={classes.uploadInfoText}>Click here or drag & drop file to upload image.</p>
+                <p className={classes.uploadInfoText}>{t("upload_image_description")}</p>
               </div>
             </div>
           )}

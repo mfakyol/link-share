@@ -26,14 +26,14 @@
   --box-shadow: 0 0px 6px rgba(40, 40, 40, 0.1);
   --overlay-color: rgba(0, 0, 0, 0.3);
 
-  --disable-color: #d0d0d0;
+  --disable-color: #808080;
 }
-:root.dark {
+:root[theme="dark"] {
   --text-color: #fff;
   --body-bg-color: #121212;
   --primary-bg-color: #1b1b1b;
   --border-color: rgba(255, 255, 255, 0.1);
-  --box-shadow: 0 0px 6px rgba(40, 40, 40, 0.1);
+  --box-shadow: 0 0 0 1px var(--border-color);
   --overlay-color: rgba(0, 0, 0, 0.6);
   --disable-color: #808080;
   color-scheme: dark;

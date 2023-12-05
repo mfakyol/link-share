@@ -3,6 +3,7 @@ import classes from "./styles.module.scss";
 import Popup from "@/components/common/Popup";
 import Button from "@/components/common/Button";
 import { setPageSetting } from "@/store/dashboardSlice";
+import { useTranslation } from "@/contexts/TranslationContext";
 import pageSettingService from "@/services/pageSettingService";
 import TextInput, { TextInputRef } from "@/components/common/TextInput";
 import { ChangeEvent, FormEventHandler, useCallback, useRef, useState } from "react";
@@ -14,6 +15,7 @@ interface CreateLinkPopupProps {
 }
 
 function CreateOrEditLinkPopup({ visible, link, onClose }: CreateLinkPopupProps) {
+  const [t] = useTranslation();
   const dispatch = useDispatch();
   const titleInputRef = useRef<TextInputRef>(null);
   const urlInputRef = useRef<TextInputRef>(null);
@@ -65,12 +67,12 @@ function CreateOrEditLinkPopup({ visible, link, onClose }: CreateLinkPopupProps)
   }, []);
 
   return (
-    <Popup visible={visible} title={link ? "Update Link" : "Create New Link"} onClose={onClose} containerClassName={classes.container}>
+    <Popup visible={visible} title={t(link ? "update_link" : "create_new_link")} onClose={onClose} containerClassName={classes.container}>
       <form onSubmit={handleSubmit}>
-        <TextInput ref={titleInputRef} placeholder="Title" defaultValue={link ? link.title : ""} onChange={handleChange.bind(null, "title")} />
-        <TextInput ref={urlInputRef} placeholder="Url" defaultValue={link ? link.url : ""} onChange={handleChange.bind(null, "url")} />
+        <TextInput ref={titleInputRef} placeholder={t("title")} defaultValue={link ? link.title : ""} onChange={handleChange.bind(null, "title")} />
+        <TextInput ref={urlInputRef} placeholder={t("url")} defaultValue={link ? link.url : ""} onChange={handleChange.bind(null, "url")} />
         <Button color="blue" loading={isLoading}>
-          {link ? "Update" : "Create"}
+          {t(link ? "update" : "create")}
         </Button>
       </form>
     </Popup>

@@ -5,6 +5,7 @@ import PageSettingsModel from '../models/pageSettingModel';
 import intervalServerErrorResponse from '../responses/intervalServerErrorResponse';
 import { isValidEmail, isValidUsername } from '../utils/validators';
 import { compareHashAndPassword, createHash } from '../utils/hash-password';
+import dataResponse from '../responses/dataResponse';
 
 async function login(req: Request, res: Response) {
   const { username, password } = req.body;
@@ -132,6 +133,15 @@ async function changePassword(req: Request, res: Response) {
     return intervalServerErrorResponse(req, res, err);
   }
 }
+async function getAccountData(req: Request, res: Response) {
+  try {
+    const user = await UserModel.findById(req.session.userId, '-_id username email');
+    if (!user) return res.send({ status: false, message: 'user_not_found' });
+    return dataResponse(req, res, user);
+  } catch (err) {
+    return intervalServerErrorResponse(req, res, err);
+  }
+}
 
 const userController = {
   login,
@@ -140,6 +150,7 @@ const userController = {
   isUsernameExist,
   isEmailExist,
   changePassword,
+  getAccountData,
 };
 
 export default userController;

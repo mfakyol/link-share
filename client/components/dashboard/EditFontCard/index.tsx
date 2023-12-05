@@ -1,18 +1,20 @@
-import Card from "@/components/common/Card";
-import ColorInput from "@/components/common/ColorInput";
-import Label from "@/components/common/Label";
-import { useCallback, useEffect, useState } from "react";
-import pageSettingService from "@/services/pageSettingService";
 import { useDispatch } from "react-redux";
-import Select, { Option } from "@/components/common/Select";
-import { setPageSetting } from "@/store/dashboardSlice";
+import Card from "@/components/common/Card";
+import Label from "@/components/common/Label";
 import fontService from "@/services/fontService";
+import ColorInput from "@/components/common/ColorInput";
+import { setPageSetting } from "@/store/dashboardSlice";
+import { useCallback, useEffect, useState } from "react";
+import Select, { Option } from "@/components/common/Select";
+import pageSettingService from "@/services/pageSettingService";
+import { useTranslation } from "@/contexts/TranslationContext";
 
 interface EditFontCardProps {
   pageSetting: PageSetting;
 }
 
 function EditFontCard({ pageSetting }: EditFontCardProps) {
+  const [t] = useTranslation();
   const dispatch = useDispatch();
   const [fontOptions, setFontOptions] = useState<Array<Option>>([]);
 
@@ -48,10 +50,10 @@ function EditFontCard({ pageSetting }: EditFontCardProps) {
   );
 
   return (
-    <Card title="Font">
-      <Label htmlFor="font-family">Font Family</Label>
+    <Card title="font">
+      <Label htmlFor="font-family">{t("font_family")}</Label>
       <Select id="font-family" options={fontOptions} defaultValue={pageSetting.font._id} onChange={handleChangeFont} />
-      <Label htmlFor="font-color">Font Color</Label>
+      <Label htmlFor="font-color">{t("font_color")}</Label>
       <ColorInput id="font-color" value={pageSetting.colors.fontColor} onChange={handleChangeColor} />
     </Card>
   );

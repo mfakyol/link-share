@@ -1,24 +1,25 @@
-import Card from "@/components/common/Card";
-import classes from "./styles.module.scss";
-import RadioButtonGroup from "@/components/common/RadioButtonGroup";
-import Label from "@/components/common/Label";
 import { useCallback } from "react";
-import pageSettingService from "@/services/pageSettingService";
 import { useDispatch } from "react-redux";
+import classes from "./styles.module.scss";
+import Card from "@/components/common/Card";
 import { setPageSetting } from "@/store/dashboardSlice";
+import pageSettingService from "@/services/pageSettingService";
+import { useTranslation } from "@/contexts/TranslationContext";
+import RadioButtonGroup from "@/components/common/RadioButtonGroup";
 
 interface SensitiveContentCardProps {
   pageSetting: PageSetting;
 }
 
 const options = [
-  { value: "", label: "No Sensitive" },
-  { value: "sensitive", label: "Sensitive" },
+  { value: "", label: "no_sensitive" },
+  { value: "sensitive", label: "sensitive" },
   { value: "18", label: "+18" },
   { value: "25", label: "+25" },
 ];
 
 function SensitiveContentCard({ pageSetting }: SensitiveContentCardProps) {
+  const [t] = useTranslation();
   const dispatch = useDispatch();
 
   const handleChangeSensitiveContent = useCallback(
@@ -33,8 +34,8 @@ function SensitiveContentCard({ pageSetting }: SensitiveContentCardProps) {
   );
 
   return (
-    <Card title="Sensitive Content">
-      <p className={classes.text}>If there is sensitive content, users will be warned before viewing the page.</p>
+    <Card title={t("sensitive_content")}>
+      <p className={classes.text}>{t("sensitive_content_description")}</p>
       <RadioButtonGroup name="sensitive-content" options={options} value={pageSetting.sensitiveContent} onChange={handleChangeSensitiveContent} />
     </Card>
   );

@@ -60,12 +60,43 @@ async function login({ username, password }: { username: string; password: strin
     return { status: false, message: "unknown_error" };
   }
 }
+async function logout() {
+  try {
+    const response = await httpService.postWithAuth(`${apiUrl}/user/logout`);
+
+    if (response.ok) {
+      const data = await response.json();
+      if (!data.status) return { status: false, message: data.message };
+      return data as { status: boolean };
+    } else return { status: false, message: "unknown_error" };
+  } catch (error) {
+    return { status: false, message: "unknown_error" };
+  }
+}
+
+type GetAccountData = { status: false; message: string } | { status: true; data: AccounData };
+
+async function getAccountData(): Promise<GetAccountData> {
+  try {
+    const response = await httpService.getWithAuth(`${apiUrl}/user/accountData`);
+
+    if (response.ok) {
+      const data = await response.json();
+      if (!data.status) return { status: false, message: data.message };
+      return data as { status: true; data: AccounData };
+    } else return { status: false, message: "unknown_error" };
+  } catch (error) {
+    return { status: false, message: "unknown_error" };
+  }
+}
 
 const userService = {
   isUsernameExist,
   isEmailExist,
   register,
   login,
+  logout,
+  getAccountData,
 };
 
 export default userService;
